@@ -1,0 +1,5 @@
+# vscode directory
+.vscode
+
+# astah uml .lock file
+*.asta.lock
