@@ -13,10 +13,13 @@ public class State {
         images = stateImages;
         currentPosition = -1;
     }
+    public void reset(){
+        currentPosition = 0;
+    }
     public void update(){
         currentPosition++;
-        if(currentPosition >= images.size()){
-            currentPosition = 0;
+        if(currentPosition >= images.size() || currentPosition < 0){
+            reset();
         }
     }
     public void render(Graphics g){
