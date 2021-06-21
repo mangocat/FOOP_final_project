@@ -11,12 +11,11 @@ public class State {
         this.sprite = sprite;
         name = stateName;
         images = stateImages;
-        currentPosition = 0;
+        currentPosition = -1;
     }
     public void update(){
         currentPosition++;
         if(currentPosition >= images.size()){
-            // need to tell unit the state ends
             currentPosition = 0;
         }
     }
@@ -28,6 +27,9 @@ public class State {
         }else{
             g.drawImage(images.get(currentPosition), range.x, range.y, range.width, range.height, null);
         }
+    }
+    public boolean finished(){
+        return currentPosition == images.size()-1;
     }
     public String toString(){
         return name;
