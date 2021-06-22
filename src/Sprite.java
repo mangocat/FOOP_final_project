@@ -9,9 +9,9 @@ public abstract class Sprite {
     protected int attackDistance;
     protected int damage;
     protected int front;
-    protected int currentAttackCd;
+    protected int originAttackCd;
 
-    public abstract void update(int enemyBattleLine);
+    public abstract void update();
 
     public abstract void render(Graphics g);
 
@@ -46,10 +46,10 @@ public abstract class Sprite {
     public int getFront(){
         return (face==Direction.LEFT)? location.x : location.x + range.width;
     }
-
     public void setRange(Rectangle range){ this.range = range; }
-
     public Rectangle getRange(){ return range; }
+
+    public int getEnemyBattleLine(){ return team.getEnemyBattleLine(); }
 
     public boolean isAlive() { // make sure that removeSprite sets the team to null
         return hp > 0;

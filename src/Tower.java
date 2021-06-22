@@ -14,7 +14,7 @@ public class Tower extends Sprite{
     }
 
     @Override
-    public void update(int enemyBattleLine) {
+    public void update() {
 
     }
 

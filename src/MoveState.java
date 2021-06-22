@@ -1,12 +1,15 @@
+import java.awt.*;
+
 public class MoveState extends State{
     public MoveState(Unit u, String unitType){
         super(u, "move", ImageReader.read("assets/" + unitType + "/move"));
     }
+
     @Override
     public void doAction(){
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();
-        int enemyBattleLine = unit.getEnemyTeam().getBattleLine();
+        int enemyBattleLine = unit.getEnemyBattleLine();
         int front = unit.getFront();
         int moveDistance = Math.min(unit.getMovementSpeed(), Math.abs(front-enemyBattleLine));
         // notify unit position change
@@ -20,6 +23,7 @@ public class MoveState extends State{
         unit.setRange(range);
         unit.setFront(front);
     }
+
     @Override
     public void update(){
         // check if the unit is dead.
@@ -36,13 +40,13 @@ public class MoveState extends State{
             // if can move: move
             Direction face = unit.getFace();
             Rectangle range = unit.getRange();
-            int enemyBattleLine = unit.getEnemyTeam().getBattleLine();
+            int enemyBattleLine = unit.getEnemyBattleLine();
             int front = unit.getFront();
             State next;
             // int moveDistance;
-            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.Right && front < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.RIGHT && front < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");

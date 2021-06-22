@@ -1,5 +1,5 @@
 public class IdleState extends State{
-    public IdleState(Sprite s, String spriteType){
-        super(s, "idle", ImageReader.read("assets/" + spriteType + "/idle"));
+    public IdleState(Unit u, String spriteType){
+        super(u, "idle", ImageReader.read("assets/" + spriteType + "/idle"));
     }
 }
