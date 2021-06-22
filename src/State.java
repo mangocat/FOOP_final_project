@@ -1,7 +1,7 @@
 import java.util.List;
 import java.awt.*;
 
-public class State {
+public abstract class State {
     Unit unit;
     final String name;
     final List<Image> images;
@@ -17,36 +17,7 @@ public class State {
         currentPosition = -1;
     }
     public void doAction(){} // default: do nothing
-    public void update(){
-        // check if the unit is dead.
-        if(!unit.isAlive()){
-            State dead = unit.getState("dead");
-            dead.update();
-            unit.setState(dead);
-            return;
-        }
-        currentPosition++;
-        if(currentPosition >= images.size()){
-            reset();
-            // need enemyTeam battleLine
-            // if can move: move
-            Direction face = unit.getFace();
-            Rectangle range = unit.getRange();
-            int enemyBattleLine = unit.getEnemyTeam().getBattleLine();
-            int front = unit.getFront();
-            State next;
-            // int moveDistance;
-            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.Right && front < enemyBattleLine)){
-                next = unit.getState("move");
-            }else if(unit.getAttackCd() == 0){// else if can attack: attack
-                next = unit.getState("attack");
-            }else{ // else idle
-                next = unit.getState("idle");
-            }
-            next.update();
-            unit.setState(next);
-        }
-    }
+    public abstract void update();
     public void render(Graphics g){
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();

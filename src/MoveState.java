@@ -20,7 +20,6 @@ public class MoveState extends State{
         unit.setRange(range);
         unit.setFront(front);
     }
-    @Override
     public void update(){
         // check if the unit is dead.
         if(!unit.isAlive()){
