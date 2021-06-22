@@ -14,12 +14,37 @@ public class State {
         currentPosition = -1;
     }
     public void reset(){
-        currentPosition = 0;
+        currentPosition = -1;
     }
+    public void doAction(){} // default: do nothing
     public void update(){
+        // check if the sprite is dead.
+        if(!sprite.isAlive()){
+            State dead = sprite.getState("dead");
+            dead.update();
+            sprite.setState(dead);
+            return;
+        }
         currentPosition++;
-        if(currentPosition >= images.size() || currentPosition < 0){
+        if(currentPosition >= images.size()){
             reset();
+            // need enemyTeam battleLine
+            // if can move: move
+            Direction face = sprite.getFace();
+            Rectangle range = sprite.getRange();
+            int enemyBattleLine = sprite.getEnemyTeam().getBattleLine();
+            int front = sprite.getFront();
+            State next;
+            // int moveDistance;
+            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.Right && front < enemyBattleLine)){
+                next = sprite.getState("move");
+            }else if(sprite.getAttackCd() == 0){// else if can attack: attack
+                next = sprite.getState("attack");
+            }else{ // else idle
+                next = sprite.getState("idle");
+            }
+            next.update();
+            sprite.setState(next);
         }
     }
     public void render(Graphics g){
