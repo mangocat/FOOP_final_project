@@ -41,8 +41,8 @@ public abstract class Team {
     public void update(int enemyBattleLine) {
         this.enemyBattleLine = enemyBattleLine;
         this.money += Level.getIncome(this.level);
-        for(Sprite s : this.units) {
-            s.update();
+        for(int i = 0; i < this.units.size(); i++) {
+            this.units.get(i).update();
         }
         this.updateBattleLine();
         this.cdHandler.update();
