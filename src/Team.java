@@ -46,7 +46,7 @@ public abstract class Team {
         this.cdHandler.update();
     }
 
-    private void updateBattleLine() {
+    protected void updateBattleLine() {
         this.battleLine = this.tower.getFront();
         for(Sprite s : this.units) {
             int frontX = s.getFront();

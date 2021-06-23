@@ -1,17 +1,19 @@
 import java.util.Random;
+import java.util.Map;
+import java.awt.Point;
 
 public class Computer extends Team {
     private Random random;
     private int numChoices;
     private int nextTarget;
 
-    public Computer(World world, Map<String, SpriteCreator> spriteCreators) {
-        super(world, spriteCreators);
+    public Computer(World world, Map<String, UnitCreator> unitCreators) {
+        super(world, unitCreators);
         this.direction = Direction.RIGHT;
-        this.setTower();
+        this.setTower(new Point(50, 250));
         this.updateBattleLine();
         this.random = new Random();
-        this.numChoices = this.spriteCreators.size() + 1; 
+        this.numChoices = this.unitCreators.size() + 1; 
         this.nextTarget = this.chooseTarget();
     }
 
@@ -33,7 +35,7 @@ public class Computer extends Team {
                 this.nextTarget = this.chooseTarget();
             }
         }else {
-            SpriteCreator target = this.spriteCreators.values().get(nextTarget);
+            UnitCreator target = this.unitCreators.values().get(nextTarget);
             if((this.getCD(target) == 0) && (this.money >= target.getCost())) {
                 this.createSprite(target);
                 this.nextTarget = this.chooseTarget();
