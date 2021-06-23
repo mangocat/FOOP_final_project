@@ -6,13 +6,15 @@ import java.awt.*;
 public class Human extends Team {
     private ButtonHandler buttonHandler;
 
-    public Human(World world, Map<String, UnitCreator> unitCreators, List<Button> buttons) {
-        super(world, unitCreators);
+    public Human(Map<String, UnitCreator> unitCreators) {
+        super(unitCreators);
         this.direction = Direction.LEFT;
         this.setTower(new Point(450, 250));
         this.updateBattleLine();
-        this.initButtonHandler(buttons);
+        // this.initButtonHandler(buttons);
     }
+
+    public void setButtons(List<Button> buttons){initButtonHandler(buttons);}
 
     private void initButtonHandler(List<Button> buttons) {
         Map<UnitCreator, Button> scToButtons = new HashMap<>(); 

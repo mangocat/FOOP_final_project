@@ -7,10 +7,14 @@ public class Game extends GameLoop {
 	private final Human humanUnit;
 	private final World world;
 
-	public Game(World world, Human humanUnit){
-		this.humanUnit = humanUnit;
+	public Game(World world){
 		this.world = world;
+        this.humanUnit = world.getHuman();
 	}
+
+    // public void setHuman(Human h){
+    //     this.humanUnit = h;
+    // }
 
 	public void humanLevelUp(){
 		this.humanUnit.levelUp();

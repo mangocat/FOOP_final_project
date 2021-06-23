@@ -7,8 +7,8 @@ public class Computer extends Team {
     private int numChoices;
     private int nextTarget;
 
-    public Computer(World world, Map<String, UnitCreator> unitCreators) {
-        super(world, unitCreators);
+    public Computer(Map<String, UnitCreator> unitCreators) {
+        super(unitCreators);
         this.direction = Direction.RIGHT;
         this.setTower(new Point(50, 250));
         this.updateBattleLine();

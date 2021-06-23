@@ -18,14 +18,17 @@ public abstract class Team {
     protected Map<String, UnitCreator> unitCreators;
     protected summonCDHandler cdHandler;
 
-    public Team(World world, Map<String, UnitCreator> unitCreators) {
-        this.world = world;
+    public Team(Map<String, UnitCreator> unitCreators) {
         this.money = 0;
         this.level = 1;
         this.levelCost = this.getLevelUpCost();
         this.unitCreators = unitCreators;
         this.initCD();
         // unitCreators.put("Ninja", new NinjaCreator());
+    }
+
+    public void setWorld(World w){
+        world = w;
     }
 
     private void initCD() {
