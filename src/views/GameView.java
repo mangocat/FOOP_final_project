@@ -3,7 +3,7 @@ package views;
 import controller.Game;
 import controller.GameLoop;
 import model.World;
-import model.CommandButton;
+import model.Button;
 import model.LevelUpButton;
 import model.SummonButton;
 
@@ -21,12 +21,12 @@ public class GameView extends JFrame{
 	private final ButtonsPanel buttonsPanel;
 	private final Game game;
 
-	public GameView(Game game, String ... spriteNames) throws HeadlessException{
+	public GameView(Game game, List<Button> buttons) throws HeadlessException{
 		this.game = game;
 		this.background = new Background();
 		this.canvas = new Canvas();
 		this.game.setView(canvas);
-		this.buttonsPanel = new ButtonsPanel(game, spriteNames);
+		this.buttonsPanel = new ButtonsPanel(game, buttons);
 	}
 
 	public void launch(){
@@ -97,20 +97,14 @@ public class GameView extends JFrame{
 	}
 
 	private class ButtonsPanel extends JPanel{
-		private final List<CommandButton> buttons;
+		private final List<Button> buttons;
 
-		public ButtonsPanel(Game game, String ... spriteNames){
-			this.buttons = new ArrayList<>();
+		public ButtonsPanel(Game game, List<Button> buttons){
+			this.buttons = buttons;
 			setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-			LevelUpButton levelUpButton = new LevelUpButton(game);
-			buttons.add(levelUpButton);
-			this.add(levelUpButton);
 
-			for(String name: spriteNames){
-				SummonButton button = new SummonButton(game, name);
-				buttons.add(button);
+			for(Button b: buttons)
 				this.add(button);
-			}
 		}
 
 		@Override
@@ -118,7 +112,7 @@ public class GameView extends JFrame{
 			super.setPreferredSize(preferredSize);
 			Dimension buttonPreferredSize = new Dimension((int)((double)preferredSize.width / (double)buttons.size()), preferredSize.height - 30);
 
-			for(CommandButton b: buttons)
+			for(Button b: buttons)
 				b.setPreferredSize(buttonPreferredSize);
 		}
 	}
