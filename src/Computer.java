@@ -10,7 +10,7 @@ public class Computer extends Team {
     public Computer(Map<String, UnitCreator> unitCreators) {
         super(unitCreators);
         this.direction = Direction.RIGHT;
-        this.setTower(new Point(50, 250));
+        this.setTower(new Point(50, 250)); // set face
         this.updateBattleLine();
         this.random = new Random();
         this.numChoices = this.unitCreators.size() + 1; 

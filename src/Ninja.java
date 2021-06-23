@@ -9,10 +9,14 @@ public class Ninja extends Unit {
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
-        stateMap.put("attack", new AttackState(this, "ninja"));
-        stateMap.put("idle", new IdleState(this, "ninja"));
-        stateMap.put("move", new MoveState(this, "ninja"));
-        stateMap.put("dead", new DeadState(this, "ninja"));
+        State attack = new AttackState(this, "ninja", 50);
+        int width = attack.getImageWidth();
+        int height = attack.getImageHeight();
+        // set range
+        stateMap.put("attack", attack);
+        stateMap.put("idle", new IdleState(this, "ninja", 50));
+        stateMap.put("move", new MoveState(this, "ninja", 50));
+        stateMap.put("dead", new DeadState(this, "ninja", 50));
         currentState = stateMap.get("move");
     }
 }

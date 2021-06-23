@@ -5,13 +5,21 @@ public abstract class State {
     Unit unit;
     final String name;
     final List<Image> images;
+    final Image sample;
     int currentPosition;
     
     public State(Unit unit, String stateName, List<Image> stateImages){
         this.unit = unit;
         name = stateName;
         images = stateImages;
+        sample = stateImages.get(0);
         currentPosition = -1;
+    }
+    public int getImageWidth(){
+        return sample.getWidth(null);
+    }
+    public int getImageHeight(){
+        return sample.getHeight(null);
     }
     public void reset(){
         currentPosition = -1;

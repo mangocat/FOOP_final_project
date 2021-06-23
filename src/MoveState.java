@@ -1,8 +1,8 @@
 import java.awt.*;
 
 public class MoveState extends State{
-    public MoveState(Unit u, String unitType){
-        super(u, "move", ImageReader.read("assets/" + unitType + "/move"));
+    public MoveState(Unit u, String unitType, int preferredWidth){
+        super(u, "move", ImageReader.read("assets/" + unitType + "/move", preferredWidth));
     }
     @Override
     public void doAction(){

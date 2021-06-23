@@ -15,6 +15,7 @@ public class Tower extends Sprite{
         this.attackDistance = attackDistance;
         this.location = location;
         this.currentAttackCd = 0;
+        // set range
     }
 
     @Override

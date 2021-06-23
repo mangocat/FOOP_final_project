@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.Collection;
 
 public class AttackState extends State{
-    public AttackState(Unit u, String spriteType){
-        super(u, "attack", ImageReader.read("assets/" + spriteType + "/attack"));
+    public AttackState(Unit u, String spriteType, int preferredWidth){
+        super(u, "attack", ImageReader.read("assets/" + spriteType + "/attack", preferredWidth));
     }
 
     @Override
