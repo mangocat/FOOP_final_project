@@ -9,6 +9,9 @@ public class Tower extends Sprite{
     private Point location;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
+    private final int width = 50;
+    private final int height;
+    private final Image image;
 
     public Tower(int hp, int attackDistance, Point location){
         this.hp = hp;
@@ -16,6 +19,10 @@ public class Tower extends Sprite{
         this.location = location;
         this.currentAttackCd = 0;
         // set range
+        image = ImageReader.read("assets/tower", width).get(0);
+        height = image.getWidth(null);
+        // need location to set x and y
+        setRange(new Rectangle((int)location.getX(), (int)location.getY(), width, height));
     }
 
     @Override
@@ -31,5 +38,11 @@ public class Tower extends Sprite{
     }
 
     @Override
-    public void render(Graphics g) {}
+    public void render(Graphics g) {
+        if(face == Direction.LEFT){
+            g.drawImage(image, range.x + range.width, range.y, -range.width, range.height, null);
+        }else{
+            g.drawImage(image, range.x, range.y, range.width, range.height, null);
+        }
+    }
 }

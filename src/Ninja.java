@@ -6,17 +6,19 @@ public class Ninja extends Unit {
     static final int maxHp = 100;
     static final int speed = 3;
     static final int ninjaDamage = 20;
+    final int width = 50;
+    final int height;
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
-        State attack = new AttackState(this, "ninja", 50);
-        int width = attack.getImageWidth();
-        int height = attack.getImageHeight();
-        // set range
+        State attack = new AttackState(this, "ninja", width);
+        height = attack.getImageHeight();
+        // set range, need location to set range.x, range.y (the first 2 parameters of Rectangle)
+        setRange(new Rectangle(0, 0, width, height));
         stateMap.put("attack", attack);
-        stateMap.put("idle", new IdleState(this, "ninja", 50));
-        stateMap.put("move", new MoveState(this, "ninja", 50));
-        stateMap.put("dead", new DeadState(this, "ninja", 50));
+        stateMap.put("idle", new IdleState(this, "ninja", width));
+        stateMap.put("move", new MoveState(this, "ninja", width));
+        stateMap.put("dead", new DeadState(this, "ninja", width));
         currentState = stateMap.get("move");
     }
 }
