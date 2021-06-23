@@ -1,3 +1,3 @@
 #!/bin/bash
 
-javac -cp out/ Main
+java -cp out/ Main
