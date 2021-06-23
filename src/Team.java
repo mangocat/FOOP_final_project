@@ -10,6 +10,7 @@ public abstract class Team {
     protected Tower tower;
     protected Direction direction;
     protected int battleLine;
+    protected int enemyBattleLine;
     protected int money;
     protected int level;
     protected int levelCost;
@@ -34,10 +35,11 @@ public abstract class Team {
         this.cdHandler = new summonCDHandler(CDs); 
     }
 
-    public void update(Team enemyTeam) {
+    public void update(int enemyBattleLine) {
+        this.enemyBattleLine = enemyBattleLine;
         this.money += Level.getIncome(this.level);
         for(Sprite s : this.units) {
-            s.update(enemyTeam);
+            s.update();
         }
         this.updateBattleLine();
         this.cdHandler.update();
@@ -90,6 +92,10 @@ public abstract class Team {
 
     public int getBattleLine() {
         return this.battleLine;
+    }
+
+    public int getEnemyBattleLine() {
+        return this.enemyBattleLine;
     }
 
     public void levelUp() {
