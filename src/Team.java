@@ -72,9 +72,9 @@ public abstract class Team {
 
     public void addSprite(Sprite newSprite) {
         newSprite.setFace(this.direction);
-        newSprite.setLocation(this.tower.getLocation());
+        // newSprite.setLocation(this.tower.getRange().getLocation());
         newSprite.setTeam(this);
-        newSprite.setRange(new Rectangle(this.tower.getLocation(), new Dimension(newSprite.getWidth(), newSprite.getHeight())));
+        newSprite.setRange(new Rectangle(this.tower.getRange().getLocation(), new Dimension(newSprite.getWidth(), newSprite.getHeight())));
         this.units.add(newSprite);
         return;
     }

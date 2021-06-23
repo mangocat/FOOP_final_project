@@ -8,7 +8,6 @@ public class AttackState extends State{
 
     @Override
     public void update() {
-        System.out.println("Attack mode!");
         if(!unit.isAlive()){
             State dead = unit.getState("dead");
             dead.update();
@@ -20,7 +19,7 @@ public class AttackState extends State{
             // ready to attack, check if any sprite in range for attack, if not change to idle state
             Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getRange().getLocation(), unit.getAttackDistance());
             if(attackableUnit.isEmpty()){ // no enemy in boundary
-                System.out.println("No enemy found!");
+                // System.out.println("No enemy found!");
                 State next = unit.getState("idle");
                 next.update();
                 unit.setState(next);
@@ -51,6 +50,9 @@ public class AttackState extends State{
 
     @Override
     public void doAction() {
+        if(currentPosition!=0){
+            return;
+        }
         Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getRange().getLocation(), unit.getAttackDistance());
         Sprite targetSprite = new Ninja();
         int minDistance = 10000;

@@ -35,13 +35,13 @@ public abstract class Sprite {
         return team;
     }
 
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+    // public void setLocation(Point location) {
+    //     this.location = location;
+    // }
 
-    public Point getLocation(){
-        return location;
-    }
+    // public Point getLocation(){
+    //     return location;
+    // }
 
     public void setFace(Direction face) {
         this.face = face;
@@ -57,7 +57,9 @@ public abstract class Sprite {
         return (face==Direction.LEFT)? range.x : range.x + range.width;
         // return this.front;
     }
+
     public void setRange(Rectangle range){ this.range = range; }
+
     public Rectangle getRange(){ return range; }
 
     public int getEnemyBattleLine(){ return team.getEnemyBattleLine(); }

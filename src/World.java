@@ -23,9 +23,9 @@ public class World {
 
     public Collection<Sprite> getSprites(Direction face, Point location, int range){
         if(face==Direction.LEFT){ // find computer as targets
-            return computer.getSprites().stream().filter(s -> (location.x - s.getLocation().x) < range).collect(toSet());
+            return computer.getSprites().stream().filter(s -> (location.x - s.getRange().getLocation().x) <= range).collect(toSet());
         } else {
-            return human.getSprites().stream().filter(s -> (s.getLocation().x - location.x) < range).collect(toSet());
+            return human.getSprites().stream().filter(s -> (s.getRange().getLocation().x - location.x) <= range).collect(toSet());
         }
     }
 }
