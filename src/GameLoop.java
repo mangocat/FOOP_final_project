@@ -16,12 +16,26 @@ public abstract class GameLoop {
 
 	private void gameLoop() {
 		running = true;
+		boolean humanWin = false;
+
 		while (running) {
 			World world = getWorld();
 			world.update();
 			view.render(world);
 			delay(15);
+
+
+			if(world.getHuman().isLose()){
+				humanWin = false;
+				running = false;
+			}
+			else if(world.getComputer().isLose()){
+				humanWin = true;
+				running = false;
+			}
 		}
+
+		view.renderGameOver(humanWin);
 	}
 
 	protected abstract World getWorld();
@@ -41,5 +55,6 @@ public abstract class GameLoop {
 
 	public interface View {
 		void render(World world);
+		void renderGameOver(boolean humanWin);
 	}
 }

@@ -61,6 +61,20 @@ public class GameView extends JFrame{
 		}
 
 		@Override
+		public void renderGameOver(boolean humanWin){
+			JFrame gameOverFrame = new JFrame();
+			gameOverFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			gameOverFrame.setLayout(new GridBagLayout());
+			JLabel resultText = new JLabel(humanWin? "You win!": "You lose.");
+			resultText.setFont(new Font(null, Font.PLAIN, 48));
+			gameOverFrame.add(resultText);
+			gameOverFrame.getContentPane().setBackground(humanWin? Color.BLUE: Color.RED);
+			gameOverFrame.setSize(GameView.WIDTH + 10, GameView.HEIGHT);
+			gameOverFrame.setLocationRelativeTo(GameView.this);
+			gameOverFrame.setVisible(true);
+		}
+
+		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			world.render(g);

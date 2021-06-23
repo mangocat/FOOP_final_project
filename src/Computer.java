@@ -14,7 +14,7 @@ public class Computer extends Team {
         this.updateBattleLine();
         this.random = new Random();
         this.numChoices = this.unitCreators.size() + 1; 
-        this.nextTarget = this.chooseTarget();
+        this.nextTarget = 0;
     }
 
     private int chooseTarget() {

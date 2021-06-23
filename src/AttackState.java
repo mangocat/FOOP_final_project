@@ -15,7 +15,7 @@ public class AttackState extends State{
             return;
         }
         currentPosition++;
-        if(currentPosition==0){
+        if(currentPosition==4){
             // ready to attack, check if any sprite in range for attack, if not change to idle state
             Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit, unit.getFace(), unit.getAttackDistance());
             if(attackableUnit.isEmpty()){ // no enemy in boundary
