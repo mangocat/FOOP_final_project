@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.Collection;
+import static java.util.stream.Collectors.toSet;
 
 public class World {
     // need to check if the world needs to construct the team
@@ -17,4 +19,12 @@ public class World {
     }
     public Team getHuman(){return human;}
     public Team getComputer(){return computer;}
+
+    public Collection<Sprite> getSprites(Direction face, Point location, int range){
+        if(face==Direction.LEFT){ // find computer as targets
+            return computer.getSprites().stream().filter(s -> (location.x - s.getLocation().x) < range).collect(toSet());
+        } else {
+            return human.getSprites().stream().filter(s -> (s.getLocation().x - location.x) < range).collect(toSet());
+        }
+    }
 }
