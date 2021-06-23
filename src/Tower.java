@@ -28,7 +28,7 @@ public class Tower extends Sprite{
     public void update() {
         currentAttackCd -= 1;
         if(currentAttackCd <= 0){
-            Collection<Sprite> attackableUnit = team.getWorld().getSprites(face, location, attackDistance);
+            Collection<Sprite> attackableUnit = team.getWorld().getSprites(this, face, attackDistance);
             for(Sprite sprite : attackableUnit){
                 sprite.takeDamage(damage);
             }

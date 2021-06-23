@@ -21,11 +21,11 @@ public class World {
     public void setComputer(Computer c){c.setWorld(this);computer = c;}
     public Computer getComputer(){return computer;}
 
-    public Collection<Sprite> getSprites(Direction face, Point location, int range){
+    public Collection<Sprite> getSprites(Sprite sprite, Direction face, int range){
         if(face==Direction.LEFT){ // find computer as targets
-            return computer.getSprites().stream().filter(s -> (location.x - s.getRange().getLocation().x) <= range).collect(toSet());
+            return computer.getSprites().stream().filter(s -> (sprite.getFront() - s.getFront()) <= range).collect(toSet());
         } else {
-            return human.getSprites().stream().filter(s -> (s.getRange().getLocation().x - location.x) <= range).collect(toSet());
+            return human.getSprites().stream().filter(s -> (s.getFront() - sprite.getFront()) <= range).collect(toSet());
         }
     }
 }

@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ninja extends Unit {
-    static final int attackCd = 10git0; // attack every 30 updates
+    static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 50;
     static final int maxHp = 100;
     static final int speed = 3;
