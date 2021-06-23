@@ -140,4 +140,8 @@ public abstract class Team {
     public int getMoney() {
         return this.money;
     }
+
+    public int getLevelCost() {
+        return this.levelCost;
+    }
 }

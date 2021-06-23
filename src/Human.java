@@ -23,7 +23,7 @@ public class Human extends Team {
             scToButtons.put(sc, buttons.get(cur));
             cur += 1;
         }
-        this.buttonHandler = new ButtonHandler(this, scToButtons);
+        this.buttonHandler = new ButtonHandler(this, scToButtons, buttons.get(buttons.size()-1));
     }
 
     @Override

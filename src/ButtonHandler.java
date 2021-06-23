@@ -5,11 +5,13 @@ import java.awt.*;
 
 public class ButtonHandler {
     private Human human;
-    private Map<UnitCreator, Button> buttons;
+    private Map<String, Button> buttons;
+    private Button levelUpButton;
     
-    public ButtonHandler(Human human, Map<UnitCreator, Button> buttons) {
+    public ButtonHandler(Human human, Map<UnitCreator, Button> buttons, Button levelUpButton) {
         this.human = human;
         this.buttons = buttons;
+        this.levelUpButton = levelUpButton;
     }
 
     public void update() {        
@@ -20,6 +22,14 @@ public class ButtonHandler {
             }
             this.buttons.get(sc).setEnabled(isAble);
         }
+
+        if(this.human.getMoney() < this.human.getLevelCost()) {
+            this.levelUpButton.setEnable(false);
+        }else {
+            this.levelUpButton.setEnable(true);
+        }
+
+        return;
     }
 
     public void setDisable(UnitCreator sc) {
