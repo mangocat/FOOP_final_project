@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ButtonHandler {
     private Human human;
-    private Map<String, Button> buttons;
+    private Map<UnitCreator, Button> buttons;
     private Button levelUpButton;
     
     public ButtonHandler(Human human, Map<UnitCreator, Button> buttons, Button levelUpButton) {
@@ -24,9 +24,9 @@ public class ButtonHandler {
         }
 
         if(this.human.getMoney() < this.human.getLevelCost()) {
-            this.levelUpButton.setEnable(false);
+            this.levelUpButton.setEnabled(false);
         }else {
-            this.levelUpButton.setEnable(true);
+            this.levelUpButton.setEnabled(true);
         }
 
         return;
