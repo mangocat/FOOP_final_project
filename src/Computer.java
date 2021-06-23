@@ -35,7 +35,16 @@ public class Computer extends Team {
                 this.nextTarget = this.chooseTarget();
             }
         }else {
-            UnitCreator target = this.unitCreators.values().get(nextTarget);
+            UnitCreator target;
+            int i = 0;
+            for(UnitCreator t : this.unitCreators.values()) {
+                if(i == nextTarget) {
+                    target = t;
+                    break;
+                }
+                i += 1;
+            }
+
             if((this.getCD(target) == 0) && (this.money >= target.getCost())) {
                 this.createSprite(target);
                 this.nextTarget = this.chooseTarget();
