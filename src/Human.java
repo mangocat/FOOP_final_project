@@ -33,16 +33,16 @@ public class Human extends Team {
         return;
     }   
     
-    protected void updateBattleLine() {
-        this.battleLine = this.tower.getFront();
-        for(Sprite s : this.units) {
-            int frontX = s.getFront();
-            if(frontX > this.battleLine) {
-                this.battleLine = frontX;
-            }
-        }
-        return;
-    }
+    // protected void updateBattleLine() {
+    //     this.battleLine = this.tower.getFront();
+    //     for(Sprite s : this.units) {
+    //         int frontX = s.getFront();
+    //         if(frontX > this.battleLine) {
+    //             this.battleLine = frontX;
+    //         }
+    //     }
+    //     return;
+    // }
 
     @Override
     public void createSprite(String spriteName) {
