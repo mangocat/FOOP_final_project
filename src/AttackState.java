@@ -17,7 +17,7 @@ public class AttackState extends State{
         currentPosition++;
         if(currentPosition==0){
             // ready to attack, check if any sprite in range for attack, if not change to idle state
-            Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.face, unit.location, unit.attackDistance);
+            Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getLocation(), unit.getAttackDistance());
             if(attackableUnit==null){ // no enemy in boundary
                 reset();
                 State next = unit.getState("idle");
@@ -49,16 +49,16 @@ public class AttackState extends State{
 
     @Override
     public void doAction() {
-        Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.face, unit.location, unit.attackDistance);
+        Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getLocation(), unit.getAttackDistance());
         Sprite targetSprite;
         int minDistance = 10000;
         for(Sprite sprite : attackableUnit){
-            if(Math.abs(sprite.getLocation().x - unit.location.x)<minDistance){
+            if(Math.abs(sprite.getLocation().x - unit.getLocation().x)<minDistance){
                 targetSprite = sprite;
-                minDistance = Math.abs(sprite.getLocation().x - unit.location.x);
+                minDistance = Math.abs(sprite.getLocation().x - unit.getLocation().x);
             }
         }
-        unit.setCurrentAttackCd(unit.originAttackCd); // set cd to max value
-        targetSprite.takeDamage(unit.damage);
+        unit.setCurrentAttackCd(unit.getOriginAttackCd()); // set cd to max value
+        targetSprite.takeDamage(unit.getDamage());
     }
 }

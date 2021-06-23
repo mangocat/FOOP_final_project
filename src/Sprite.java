@@ -51,6 +51,18 @@ public abstract class Sprite {
 
     public int getEnemyBattleLine(){ return team.getEnemyBattleLine(); }
 
+    public int getAttackDistance() {
+        return attackDistance;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getOriginAttackCd() {
+        return originAttackCd;
+    }
+
     public boolean isAlive() { // make sure that removeSprite sets the team to null
         return hp > 0;
     }
