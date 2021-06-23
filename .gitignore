@@ -3,3 +3,6 @@
 
 # astah uml .lock file
 *.asta.lock
+
+# compiled files
+*.class
