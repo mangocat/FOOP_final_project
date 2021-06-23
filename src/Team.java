@@ -122,8 +122,8 @@ public abstract class Team {
 
     public void render(Graphics g) {
         this.tower.render(g);
-        for(Sprite s : this.units) {
-            s.render(g);
+        for(int i = 0; i < this.units.size(); i++) {
+            this.units.get(i).render(g);
         }
         return;
     }
