@@ -6,6 +6,7 @@ public class Tower extends Sprite{
     private int hp;
     private int attackDistance;
     public static final int damage = 10;
+    // private Point location;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
     private final Image image;

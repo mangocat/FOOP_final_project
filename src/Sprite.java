@@ -55,6 +55,7 @@ public abstract class Sprite {
 
     public int getFront(){
         return (face==Direction.LEFT)? range.x : range.x + range.width;
+        // return this.front;
     }
     public void setRange(Rectangle range){ this.range = range; }
     public Rectangle getRange(){ return range; }

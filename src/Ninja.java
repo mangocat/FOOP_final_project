@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ninja extends Unit {
-    static final int attackCd = 30; // attack every 30 updates
+    static final int attackCd = 20; // attack every 30 updates
     static final int attackDistance = 50;
     static final int maxHp = 100;
     static final int speed = 3;
@@ -12,8 +12,9 @@ public class Ninja extends Unit {
         this.width = 100;
         State attack = new AttackState(this, "ninja", width);
         height = attack.getImageHeight();
-        // set range, need location to set range.x, range.y (the first 2 parameters of Rectangle)
-        //setRange(new Rectangle(0, 0, width, height));
+        // set range, need location to set range.x, range.y (the first 2 parameters of
+        // Rectangle)
+        // setRange(new Rectangle(0, 0, width, height));
         stateMap.put("attack", attack);
         stateMap.put("idle", new IdleState(this, "ninja", width));
         stateMap.put("move", new MoveState(this, "ninja", width));
