@@ -6,9 +6,10 @@ public class MoveState extends State{
     public void doAction(){
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();
-        int enemyBattleLine = unit.getEnemyTeam().getBattleLine();
+        int enemyBattleLine = unit.getEnemyBattleLine();
+        int attackDistance = unit.getAttackDistance();
         int front = unit.getFront();
-        int moveDistance = Math.min(unit.getMovementSpeed(), Math.abs(front-enemyBattleLine));
+        int moveDistance = Math.min(unit.getMovementSpeed(), Math.abs(front-enemyBattleLine)-attackDistance);
         // notify unit position change
         if(face == Direction.LEFT){
             range.x -= moveDistance;
@@ -35,13 +36,14 @@ public class MoveState extends State{
             // if can move: move
             Direction face = unit.getFace();
             Rectangle range = unit.getRange();
-            int enemyBattleLine = unit.getEnemyTeam().getBattleLine();
+            int enemyBattleLine = unit.getEnemyBattleLine();
+            int attackDistance = unit.getAttackDistance();
             int front = unit.getFront();
             State next;
             // int moveDistance;
-            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.Right && front < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.Right && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");
