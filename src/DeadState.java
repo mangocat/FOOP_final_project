@@ -11,9 +11,4 @@ public class DeadState extends State{
             unit.getTeam().removeSprite(unit);
         }
     }
-
-    @Override
-    public void doAction() {
-
-    }
 }
