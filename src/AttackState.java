@@ -8,6 +8,7 @@ public class AttackState extends State{
 
     @Override
     public void update() {
+        System.out.println("Attack mode!");
         if(!unit.isAlive()){
             State dead = unit.getState("dead");
             dead.update();
@@ -17,9 +18,9 @@ public class AttackState extends State{
         currentPosition++;
         if(currentPosition==0){
             // ready to attack, check if any sprite in range for attack, if not change to idle state
-            Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getLocation(), unit.getAttackDistance());
-            if(attackableUnit==null){ // no enemy in boundary
-                reset();
+            Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getRange().getLocation(), unit.getAttackDistance());
+            if(attackableUnit.isEmpty()){ // no enemy in boundary
+                System.out.println("No enemy found!");
                 State next = unit.getState("idle");
                 next.update();
                 unit.setState(next);
@@ -32,12 +33,13 @@ public class AttackState extends State{
             Direction face = unit.getFace();
             Rectangle range = unit.getRange();
             int enemyBattleLine = unit.getEnemyBattleLine();
+            int attackDistance = unit.getAttackDistance();
             int front = unit.getFront();
             State next;
             // int moveDistance;
-            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.RIGHT && front < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() <= 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");
@@ -49,13 +51,13 @@ public class AttackState extends State{
 
     @Override
     public void doAction() {
-        Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getLocation(), unit.getAttackDistance());
+        Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getRange().getLocation(), unit.getAttackDistance());
         Sprite targetSprite = new Ninja();
         int minDistance = 10000;
         for(Sprite sprite : attackableUnit){
-            if(Math.abs(sprite.getLocation().x - unit.getLocation().x)<minDistance){
+            if(Math.abs(sprite.getRange().x - unit.getRange().x)<minDistance){
                 targetSprite = sprite;
-                minDistance = Math.abs(sprite.getLocation().x - unit.getLocation().x);
+                minDistance = Math.abs(sprite.getRange().x - unit.getRange().x);
             }
         }
         unit.setCurrentAttackCd(unit.getOriginAttackCd()); // set cd to max value

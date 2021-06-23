@@ -15,6 +15,7 @@ public abstract class Unit extends Sprite {
         this.hp = hp;
         this.damage = damage;
         this.originAttackCd = attackCd;
+        this.currentAttackCd = 0;
     }
 
     @Override

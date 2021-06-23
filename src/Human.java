@@ -9,7 +9,7 @@ public class Human extends Team {
     public Human(Map<String, UnitCreator> unitCreators) {
         super(unitCreators);
         this.direction = Direction.LEFT;
-        this.setTower(new Point(450, 250));
+        this.setTower(new Point(850, 250));
         this.updateBattleLine();
         // this.initButtonHandler(buttons);
     }
