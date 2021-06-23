@@ -7,6 +7,9 @@ public class Computer extends Team {
 
     public Computer(World world, Map<String, SpriteCreator> spriteCreators) {
         super(world, spriteCreators);
+        this.direction = Direction.RIGHT;
+        this.setTower();
+        this.updateBattleLine();
         this.random = new Random();
         this.numChoices = this.spriteCreators.size() + 1; 
         this.nextTarget = this.chooseTarget();
