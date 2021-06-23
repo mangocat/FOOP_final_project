@@ -25,8 +25,8 @@ public class Human extends Team {
     }
 
     @Override
-    public void update(Team enemyTeam) {
-        super.update(enemyTeam);
+    public void update(int enemyBattleLine) {
+        super.update(enemyBattleLine);
         buttonHandler.update();
         return;
     }   
