@@ -1,12 +1,13 @@
-package views;
 
-import controller.Game;
-import controller.GameLoop;
-import model.World;
-import model.Button;
-import model.LevelUpButton;
-import model.SummonButton;
 
+// import controller.Game;
+// import controller.GameLoop;
+// import model.World;
+// import model.Button;
+// import model.LevelUpButton;
+// import model.SummonButton;
+
+import java.util.List;
 import java.util.*;
 import java.awt.*;
 import java.io.*;
@@ -80,7 +81,7 @@ public class GameView extends JFrame{
 			}
 
 			double scaleMultiplier = (double)GameView.WIDTH / (double)originalBackgroundImage.getWidth(null);
-			backgroundImage = originalBackgroundImage.getScaledInstance(GameView.WIDTH, (int)((double)orginalBackgroundImage.getHeight(null) * scaleMultiplier), Image.SCALE_DEFAULT);
+			backgroundImage = originalBackgroundImage.getScaledInstance(GameView.WIDTH, (int)((double)originalBackgroundImage.getHeight(null) * scaleMultiplier), Image.SCALE_DEFAULT);
 			setPreferredSize(new Dimension(this.backgroundImage.getWidth(null), this.backgroundImage.getHeight(null)));
 		}
 
@@ -104,7 +105,7 @@ public class GameView extends JFrame{
 			setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
 			for(Button b: buttons)
-				this.add(button);
+				this.add(b);
 		}
 
 		@Override

@@ -35,7 +35,7 @@ public class Computer extends Team {
                 this.nextTarget = this.chooseTarget();
             }
         }else {
-            UnitCreator target;
+            UnitCreator target = new NinjaCreator();
             int i = 0;
             for(UnitCreator t : this.unitCreators.values()) {
                 if(i == nextTarget) {

@@ -1,6 +1,6 @@
-package controller;
 
-import model.World;
+
+// import model.World;
 
 public abstract class GameLoop {
 	private boolean running;

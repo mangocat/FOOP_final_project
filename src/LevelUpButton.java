@@ -1,6 +1,4 @@
-package model;
 
-import controller.Game;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -15,7 +13,7 @@ public class LevelUpButton extends Button{
 		addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					LevelUpButton.this.game.hummanLevelUp(spriteName);
+					LevelUpButton.this.game.humanLevelUp();
 				}
 			}
 		);

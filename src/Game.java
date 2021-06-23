@@ -1,7 +1,7 @@
-package controller;
 
-import team.Human; /*may modify here*/
-import model.World;
+
+// import team.Human; /*may modify here*/
+// import model.World;
 
 public class Game extends GameLoop {
 	private final Human humanUnit;

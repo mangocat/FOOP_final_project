@@ -1,6 +1,4 @@
-package model;
 
-import controller.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +30,7 @@ public class SummonButton extends Button{
 		addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					SummonButton.this.game.hummanSummon(spriteName);
+					SummonButton.this.game.humanSummon(spriteName);
 				}
 			}
 		);
