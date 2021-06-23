@@ -1,8 +1,8 @@
 import java.awt.*;
 
 public class IdleState extends State{
-    public IdleState(Unit u, String spriteType, int preferredWidth) {
-        super(u, "idle", ImageReader.read("assets/" + spriteType + "/idle", preferredWidth));
+    public IdleState(Unit u, String spriteType, double scale) {
+        super(u, "idle", ImageReader.read("assets/" + spriteType + "/idle", scale));
     }
 
     public void update(){

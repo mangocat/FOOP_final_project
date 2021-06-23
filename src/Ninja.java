@@ -1,5 +1,16 @@
 import java.awt.*;
 
+import javax.imageio.ImageIO;
+
+import java.util.ArrayList;
+import java.awt.Image;
+import java.io.IOException;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.DirectoryStream;
+
 public class Ninja extends Unit {
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 50;
@@ -9,16 +20,23 @@ public class Ninja extends Unit {
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
-        this.width = 100;
-        State attack = new AttackState(this, "ninja", width);
-        height = attack.getImageHeight();
-        // set range, need location to set range.x, range.y (the first 2 parameters of
-        // Rectangle)
-        // setRange(new Rectangle(0, 0, width, height));
-        stateMap.put("attack", attack);
-        stateMap.put("idle", new IdleState(this, "ninja", width));
-        stateMap.put("move", new MoveState(this, "ninja", width));
-        stateMap.put("dead", new DeadState(this, "ninja", width));
+        this.height = 200;
+        Image sample;
+        try{
+            Path samplePath = Paths.get("assets/ninja/attack/0.png");
+            sample = ImageIO.read(samplePath.toFile());
+        }catch(IOException e){
+            throw new RuntimeException();
+        }
+        int originalHeight = sample.getHeight(null);
+        int originalWidth = sample.getWidth(null);
+        double scale = ((double)height)/originalHeight;
+        width = (int)(originalWidth*scale);
+
+        stateMap.put("attack", new AttackState(this, "ninja", scale));
+        stateMap.put("idle", new IdleState(this, "ninja", scale));
+        stateMap.put("move", new MoveState(this, "ninja", scale));
+        stateMap.put("dead", new DeadState(this, "ninja", scale));
         currentState = stateMap.get("move");
     }
 }

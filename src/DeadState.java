@@ -1,6 +1,6 @@
 public class DeadState extends State{
-    public DeadState(Unit u, String unitType, int preferredWidth){
-        super(u, "dead", ImageReader.read("assets/" + unitType + "/dead", preferredWidth));
+    public DeadState(Unit u, String unitType, double scale){
+        super(u, "dead", ImageReader.read("assets/" + unitType + "/dead", scale));
     }
     public void update(){
         currentPosition++;

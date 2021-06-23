@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.nio.file.DirectoryStream;
 
 public class ImageReader {
-    public static List<Image> read(String imageFolderPath, int preferredWidth){
+    public static List<Image> read(String imageFolderPath, double scale){
         // https://docs.oracle.com/javase/tutorial/essential/io/pathOps.html#create
         // Path dir = FileSystems.getDefault().getPath(imageFolderPath);
         Path dir = Paths.get(imageFolderPath);
@@ -29,8 +29,7 @@ public class ImageReader {
             for(File file: files){
                 try{
                     Image original = ImageIO.read(file);
-                    double scaleMultiplier = preferredWidth/(double)original.getWidth(null);
-                    Image newImage = original.getScaledInstance(preferredWidth, (int)((double)original.getHeight(null) * scaleMultiplier), Image.SCALE_DEFAULT);
+                    Image newImage = original.getScaledInstance((int)((double)original.getWidth(null) * scale), (int)((double)original.getHeight(null) * scale), Image.SCALE_DEFAULT);
                     images.add(newImage);
                 }catch(IOException e){
                     throw new RuntimeException();
