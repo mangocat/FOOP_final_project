@@ -137,7 +137,10 @@ public abstract class Team {
     }
 
     public List<Sprite> getSprites() {
-        return this.units;
+        List<Sprite> allSprites = new ArrayList<>();
+        allSprites.addAll(this.units);
+        allSprites.add(this.tower);
+        return allSprites;
     }
 
     public int getCD(UnitCreator sc) {
