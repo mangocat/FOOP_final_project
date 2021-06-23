@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public abstract class Sprite {
-    protected Point location = new Point();
+    protected Point location;
     protected Rectangle range;
     protected Direction face;
     protected Team team;
@@ -54,7 +54,7 @@ public abstract class Sprite {
     public void setFront(int x){ this.front = x; }
 
     public int getFront(){
-        return (face==Direction.LEFT)? location.x : location.x + range.width;
+        return (face==Direction.LEFT)? range.x : range.x + range.width;
     }
     public void setRange(Rectangle range){ this.range = range; }
     public Rectangle getRange(){ return range; }

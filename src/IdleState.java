@@ -21,7 +21,7 @@ public class IdleState extends State{
         State next;
         if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.RIGHT && front+attackDistance >= enemyBattleLine)){
             // if the range is enough, try to attack
-            if(unit.getCurrentAttackCd() == 0){
+            if(unit.getCurrentAttackCd() <= 0){
                 reset();
                 next = unit.getState("attack");
                 next.update();
@@ -35,7 +35,7 @@ public class IdleState extends State{
             // if can move: move
             if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() <= 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");

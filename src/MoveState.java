@@ -40,7 +40,7 @@ public class MoveState extends State{
         if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.RIGHT && front+attackDistance >= enemyBattleLine)){
             reset();
             // if the range is enough, try to stop and attack
-            if(unit.getCurrentAttackCd() == 0){
+            if(unit.getCurrentAttackCd() <= 0){
                 next = unit.getState("attack");
             }else{
                 next = unit.getState("idle");
@@ -55,7 +55,7 @@ public class MoveState extends State{
             // if can move: move
             if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() <= 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");

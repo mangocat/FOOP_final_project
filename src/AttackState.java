@@ -33,11 +33,12 @@ public class AttackState extends State{
             Rectangle range = unit.getRange();
             int enemyBattleLine = unit.getEnemyBattleLine();
             int front = unit.getFront();
+            int attackDistance = unit.getAttackDistance();
             State next;
             // int moveDistance;
-            if((face == Direction.LEFT && enemyBattleLine < front) || (face == Direction.RIGHT && front < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
-            }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
+            }else if(unit.getCurrentAttackCd() <= 0){// else if can attack: attack
                 next = unit.getState("attack");
             }else{ // else idle
                 next = unit.getState("idle");

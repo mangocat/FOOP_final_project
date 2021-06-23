@@ -52,7 +52,12 @@ public abstract class Team {
         this.battleLine = this.tower.getFront();
         for(Sprite s : this.units) {
             int frontX = s.getFront();
-            if(frontX > this.battleLine) {
+            Direction face = tower.getFace();
+            if(face == Direction.RIGHT && frontX > this.battleLine) {
+                this.battleLine = frontX;
+                continue;
+            }
+            if(face == Direction.LEFT && frontX < this.battleLine){
                 this.battleLine = frontX;
             }
         }
