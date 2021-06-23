@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.*;
 
 public abstract class Team {
     protected World world;
@@ -63,12 +62,14 @@ public abstract class Team {
     protected void setTower(Point p) {
         this.tower = new Tower(1000, 200, p);
         this.tower.setFace(this.direction);
+        this.tower.setTeam(this);
     }
 
     public void addSprite(Sprite newSprite) {
         newSprite.setFace(this.direction);
         newSprite.setLocation(this.tower.getLocation());
-        
+        newSprite.setTeam(this);
+        newSprite.setRange(new Rectangle(this.tower.getLocation(), new Dimension(newSprite.getWidth(), newSprite.getHeight())));
         this.units.add(newSprite);
         return;
     }

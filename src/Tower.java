@@ -9,8 +9,6 @@ public class Tower extends Sprite{
     private Point location;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
-    private final int width = 50;
-    private final int height;
     private final Image image;
 
     public Tower(int hp, int attackDistance, Point location){
@@ -18,9 +16,10 @@ public class Tower extends Sprite{
         this.attackDistance = attackDistance;
         this.location = location;
         this.currentAttackCd = 0;
+        this.width = 50;
         // set range
         image = ImageReader.read("assets/tower", width).get(0);
-        height = image.getWidth(null);
+        height = image.getHeight(null);
         // need location to set x and y
         setRange(new Rectangle((int)location.getX(), (int)location.getY(), width, height));
     }

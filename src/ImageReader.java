@@ -43,8 +43,8 @@ public class ImageReader {
     }
     public static void sortFileByName(List<File> files){
         files.sort((file1, file2) -> {
-            int index1 = Integer.parseInt(file1.getName().split(".")[0]);
-            int index2 = Integer.parseInt(file2.getName().split(".")[0]);
+            int index1 = Integer.parseInt(file1.getName().split("\\.")[0]);
+            int index2 = Integer.parseInt(file2.getName().split("\\.")[0]);
             return index1 - index2;
         });
     }

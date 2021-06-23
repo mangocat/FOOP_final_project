@@ -10,10 +10,20 @@ public abstract class Sprite {
     protected int damage;
     protected int front;
     protected int originAttackCd;
+    protected int width;
+    protected int height;
 
     public abstract void update();
 
     public abstract void render(Graphics g);
+
+    public int getWidth(){
+        return this.width;
+    }
+
+    public int getHeight(){
+        return this.height;
+    }
 
     public void takeDamage(int dmg){ hp -= dmg; }
 

@@ -15,8 +15,8 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 
 public class GameView extends JFrame{
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 500;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 750;
 	private final Canvas canvas;
 	private final Background background;
 	private final ButtonsPanel buttonsPanel;

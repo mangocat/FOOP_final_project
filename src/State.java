@@ -13,7 +13,7 @@ public abstract class State {
         name = stateName;
         images = stateImages;
         sample = stateImages.get(0);
-        currentPosition = -1;
+        currentPosition = 0;
     }
     public int getImageWidth(){
         return sample.getWidth(null);
