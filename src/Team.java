@@ -129,7 +129,7 @@ public abstract class Team {
     }
 
     public boolean isLose() {
-        return this.tower.isAlive();
+        return !this.tower.isAlive();
     }
 
     public World getWorld() {
