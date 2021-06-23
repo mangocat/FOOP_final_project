@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-public class SummonButton extends CommandButton{
+public class SummonButton extends Button{
 	private static final String loadDirectory = "assets/icons/";
 	private final String spriteName;
 	private final Game game;

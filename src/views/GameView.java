@@ -3,7 +3,7 @@ package views;
 import controller.Game;
 import controller.GameLoop;
 import model.World;
-import model.CommandButton;
+import model.Button;
 import model.LevelUpButton;
 import model.SummonButton;
 
@@ -112,7 +112,7 @@ public class GameView extends JFrame{
 			super.setPreferredSize(preferredSize);
 			Dimension buttonPreferredSize = new Dimension((int)((double)preferredSize.width / (double)buttons.size()), preferredSize.height - 30);
 
-			for(CommandButton b: buttons)
+			for(Button b: buttons)
 				b.setPreferredSize(buttonPreferredSize);
 		}
 	}

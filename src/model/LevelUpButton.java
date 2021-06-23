@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class LevelUpButton extends CommandButton{
+public class LevelUpButton extends Button{
 	private final Game game;
 
 	public LevelUpButton(Game game){
