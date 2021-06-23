@@ -19,7 +19,7 @@ public class IdleState extends State{
         int attackDistance = unit.getAttackDistance();
         int front = unit.getFront();
         State next;
-        if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.Right && front+attackDistance >= enemyBattleLine)){
+        if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.RIGHT && front+attackDistance >= enemyBattleLine)){
             // if the range is enough, try to attack
             if(unit.getCurrentAttackCd() == 0){
                 reset();
@@ -33,7 +33,7 @@ public class IdleState extends State{
         if(currentPosition >= images.size()){
             reset();
             // if can move: move
-            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.Right && front+attackDistance < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
             }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
                 next = unit.getState("attack");

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.awt.Graphics;
+import java.awt.Point;
 
 public abstract class Team {
     protected World world;
@@ -14,22 +15,22 @@ public abstract class Team {
     protected int money;
     protected int level;
     protected int levelCost;
-    protected Map<String, SpriteCreator> spriteCreators;
+    protected Map<String, UnitCreator> unitCreators;
     protected summonCDHandler cdHandler;
 
-    public Team(World world, Map<String, SpriteCreator> spriteCreators) {
+    public Team(World world, Map<String, UnitCreator> unitCreators) {
         this.world = world;
         this.money = 0;
         this.level = 1;
         this.levelCost = this.getLevelUpCost();
-        this.spriteCreators = spriteCreators;
+        this.unitCreators = unitCreators;
         this.initCD();
-        // spriteCreators.put("Ninja", new NinjaCreator());
+        // unitCreators.put("Ninja", new NinjaCreator());
     }
 
     private void initCD() {
-        Map<SpriteCreator, Integer> CDs = new HashMap<>();
-        for(SpriteCreator sc : this.spriteCreators.values()) {
+        Map<UnitCreator, Integer> CDs = new HashMap<>();
+        for(UnitCreator sc : this.unitCreators.values()) {
             CDs.put(sc, 0);
         }
         this.cdHandler = new summonCDHandler(CDs); 
@@ -46,9 +47,9 @@ public abstract class Team {
     }
 
     private void updateBattleLine() {
-        this.battleLine = this.tower.getFront().getX();
+        this.battleLine = this.tower.getFront();
         for(Sprite s : this.units) {
-            int frontX = s.getFront.getX();
+            int frontX = s.getFront();
             if(frontX > this.battleLine) {
                 this.battleLine = frontX;
             }
@@ -56,8 +57,8 @@ public abstract class Team {
         return;
     }
 
-    protected void setTower() {
-        this.tower = new Tower(this);
+    protected void setTower(Point p) {
+        this.tower = new Tower(1000, 200, p);
         this.tower.setFace(this.direction);
     }
 
@@ -74,18 +75,18 @@ public abstract class Team {
     }
 
     public void createSprite(String spriteName) {
-        SpriteCreator spriteCreator = this.spriteCreators.get(spriteName);
-        this.money -= spriteCreator.getCost();
-        Sprite newSprite = spriteCreator.createSprite();
-        this.cdHandler.startCD(spriteCreator);
+        UnitCreator unitCreator = this.unitCreators.get(spriteName);
+        this.money -= unitCreator.getCost();
+        Sprite newSprite = unitCreator.createUnit();
+        this.cdHandler.startCD(unitCreator);
         this.addSprite(newSprite);
         return;
     }
 
-    public void createSprite(SpriteCreator spriteCreator) {
-        this.money -= spriteCreator.getCost();
-        Sprite newSprite = spriteCreator.createSprite();
-        this.cdHandler.startCD(spriteCreator);
+    public void createSprite(UnitCreator unitCreator) {
+        this.money -= unitCreator.getCost();
+        Sprite newSprite = unitCreator.createUnit();
+        this.cdHandler.startCD(unitCreator);
         this.addSprite(newSprite);
         return;
     }
@@ -101,7 +102,7 @@ public abstract class Team {
     public void levelUp() {
         this.money -= this.levelCost;
         this.level += 1;
-        this.levelCost = this.getLevelUpCost(this.level);
+        this.levelCost = this.getLevelUpCost();
         return;
     }
 
@@ -129,7 +130,7 @@ public abstract class Team {
         return this.units;
     }
 
-    public int getCD(SpriteCreator sc) {
+    public int getCD(UnitCreator sc) {
         return this.cdHandler.getCD(sc);
     }
 

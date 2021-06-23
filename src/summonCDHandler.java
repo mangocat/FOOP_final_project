@@ -3,15 +3,15 @@ import java.util.Map;
 
 public class summonCDHandler {
 
-    private Map<SpriteCreator, Integer> coolDowns;
+    private Map<UnitCreator, Integer> coolDowns;
 
-    public summonCDHandler(Map<SpriteCreator, Integer> CDs) {
+    public summonCDHandler(Map<UnitCreator, Integer> CDs) {
         this.coolDowns = CDs;
     }
 
     public void update() {
-        Map<SpriteCreator, Integer> newCDs = new HashMap<>();
-        for(Map.Entry<SpriteCreator, Integer> set : this.coolDowns.entrySet()) {
+        Map<UnitCreator, Integer> newCDs = new HashMap<>();
+        for(Map.Entry<UnitCreator, Integer> set : this.coolDowns.entrySet()) {
             Integer cd = set.getValue();
             if(cd > 0) {
                 cd -= 1;
@@ -22,12 +22,12 @@ public class summonCDHandler {
         return;
     }
 
-    public void startCD(SpriteCreator spriteCreator) {
-        this.coolDowns.put(spriteCreator, 350);
+    public void startCD(UnitCreator unitCreator) {
+        this.coolDowns.put(unitCreator, 350);
         return;
     }
 
-    public void getCD(SpriteCreator spriteCreator) {
-        return this.coolDowns.get(spriteCreator);
+    public int getCD(UnitCreator unitCreator) {
+        return this.coolDowns.get(unitCreator);
     }
 }

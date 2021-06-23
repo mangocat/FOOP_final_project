@@ -50,7 +50,7 @@ public class AttackState extends State{
     @Override
     public void doAction() {
         Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit.getFace(), unit.getLocation(), unit.getAttackDistance());
-        Sprite targetSprite;
+        Sprite targetSprite = new Ninja();
         int minDistance = 10000;
         for(Sprite sprite : attackableUnit){
             if(Math.abs(sprite.getLocation().x - unit.getLocation().x)<minDistance){

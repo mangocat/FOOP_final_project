@@ -10,8 +10,8 @@ public class World {
         this.computer = computer;
     }
     public void update(){
-        human.update();
-        computer.update();
+        human.update(computer.getBattleLine());
+        computer.update(human.getBattleLine());
     }
     public void render(Graphics g){
         human.render(g);

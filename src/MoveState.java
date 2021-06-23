@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class MoveState extends State{
     public MoveState(Unit u, String unitType){
         super(u, "move", ImageReader.read("assets/" + unitType + "/move"));
@@ -35,7 +37,7 @@ public class MoveState extends State{
         int attackDistance = unit.getAttackDistance();
         int front = unit.getFront();
         State next;
-        if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.Right && front+attackDistance >= enemyBattleLine)){
+        if((face == Direction.LEFT && enemyBattleLine+attackDistance >= front) || (face == Direction.RIGHT && front+attackDistance >= enemyBattleLine)){
             reset();
             // if the range is enough, try to stop and attack
             if(unit.getCurrentAttackCd() == 0){
@@ -51,7 +53,7 @@ public class MoveState extends State{
         if(currentPosition >= images.size()){
             reset();
             // if can move: move
-            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.Right && front+attackDistance < enemyBattleLine)){
+            if((face == Direction.LEFT && enemyBattleLine+attackDistance < front) || (face == Direction.RIGHT && front+attackDistance < enemyBattleLine)){
                 next = unit.getState("move");
             }else if(unit.getCurrentAttackCd() == 0){// else if can attack: attack
                 next = unit.getState("attack");

@@ -26,7 +26,7 @@ public abstract class Unit extends Sprite {
 
     @Override
     public void render(Graphics g) {
-        currentState.render();
+        currentState.render(g);
     }
 
     public void setState(State state){ currentState = state; }
