@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.DirectoryStream;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Ninja extends Unit {
     static final int attackCd = 100; // attack every 30 updates
@@ -17,6 +19,7 @@ public class Ninja extends Unit {
     static final int maxHp = 100;
     static final int speed = 3;
     static final int ninjaDamage = 20;
+    protected StateHandler stateHandler;
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
@@ -33,10 +36,77 @@ public class Ninja extends Unit {
         double scale = ((double)height)/originalHeight;
         width = (int)(originalWidth*scale);
 
-        stateMap.put("attack", new AttackState(this, "ninja", scale));
-        stateMap.put("idle", new IdleState(this, "ninja", scale));
-        stateMap.put("move", new MoveState(this, "ninja", scale));
-        stateMap.put("dead", new DeadState(this, "ninja", scale));
+
+
+        StateHandler nullHandler = new StateHandler(null) {
+            @Override
+            public boolean isThis(State currentState) {
+                throw new RuntimeException("undefined state");
+            }
+        };
+
+        StateHandler idleHandler = new StateHandler(nullHandler) {
+            @Override
+            public State nextState(State currentState) {
+                if (isThis(currentState)) return stateMap.get("idle");
+                return super.nextState(currentState);
+            }
+
+            @Override
+            public boolean isThis(State currentState) {
+                return currentAttackCd > 0;
+            }
+        };
+
+        StateHandler attackStateHandler = new StateHandler(idleHandler) {
+            @Override
+            public State nextState(State currentState) {
+                if (isThis(currentState)) return stateMap.get("attack");
+
+                return super.nextState(currentState);
+            }
+
+            @Override
+            public boolean isThis(State currentState) {
+                Collection<Sprite> attackableUnits = team.getWorld().getSprites(currentState.unit, face, attackDistance);
+                return currentAttackCd <= 0 && !attackableUnits.isEmpty();
+            }
+        };
+
+        StateHandler moveStateHandler = new StateHandler(attackStateHandler) {
+            @Override
+            public State nextState(State currentState) {
+                if (isThis(currentState)) return stateMap.get("move");
+                return super.nextState(currentState);
+            }
+
+            @Override
+            public boolean isThis(State currentState) {
+                boolean isMoving = (face == Direction.LEFT && (getEnemyBattleLine() + attackDistance) < front) || (face == Direction.RIGHT && (front + attackDistance) < getEnemyBattleLine());
+                return isMoving;
+            }
+        };
+
+        StateHandler deadHandler = new StateHandler(moveStateHandler) {
+            @Override
+            public State nextState(State currentState) {
+                if (isThis(currentState)) return stateMap.get("dead");
+                return super.nextState(currentState);
+            }
+
+            @Override
+            public boolean isThis(State currentState) {
+                return !isAlive();
+            }
+        };
+
+        this.stateHandler = deadHandler;
+
+        stateMap.put("attack", new AttackState(this, "ninja", scale, stateHandler));
+        stateMap.put("idle", new IdleState(this, "ninja", scale, stateHandler));
+        stateMap.put("move", new MoveState(this, "ninja", scale, stateHandler));
+        stateMap.put("dead", new DeadState(this, "ninja", scale, stateHandler));
         currentState = stateMap.get("move");
+
     }
 }

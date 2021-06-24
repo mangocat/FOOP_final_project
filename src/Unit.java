@@ -30,7 +30,10 @@ public abstract class Unit extends Sprite {
         currentState.render(g);
     }
 
-    public void setState(State state){ currentState = state; }
+    public void setState(State state){
+        state.reset();
+        currentState = state;
+    }
 
     public State getState(String stateName){
         return stateMap.get(stateName);

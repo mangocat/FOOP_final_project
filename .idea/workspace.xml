@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0a42707-3a3d-4142-a667-2a443594b3e8" name="Default Changelist" comment="" />
+    <list default="true" id="a0a42707-3a3d-4142-a667-2a443594b3e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/StateHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AttackState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AttackState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeadState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeadState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IdleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IdleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MoveState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoveState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ninja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ninja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Unit.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,5 +63,31 @@
       <updated>1624277347837</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1624532963990">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1624532963990" />
+    <state x="326" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1624525639553">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="326" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1624525639553" />
+    <state x="330" y="278" width="598" height="490" key="find.popup" timestamp="1624525800118">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="330" y="278" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1624525800118" />
   </component>
 </project>
