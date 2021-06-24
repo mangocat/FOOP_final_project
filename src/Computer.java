@@ -4,7 +4,6 @@ import java.util.Map;
 import java.awt.Point;
 
 public class Computer extends Team {
-    private Random random;
     private int numChoices;
     private int nextTarget;
 
@@ -13,13 +12,12 @@ public class Computer extends Team {
         this.direction = Direction.RIGHT;
         this.setTower(new Point(50, 250)); // set face
         this.updateBattleLine();
-        this.random = new Random();
         this.numChoices = this.unitCreators.size() + 1; 
         this.nextTarget = 0;
     }
 
     private int chooseTarget() {
-        return random.nextInt(numChoices);
+        return this.random.nextInt(numChoices);
     }
 
     @Override
