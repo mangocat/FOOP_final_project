@@ -9,7 +9,6 @@ public class TowerHpBar {
     public TowerHpBar(Tower tower){
         this.tower = tower;
         maxHp = hp = tower.getCurHp();
-        System.out.println("tower hp bar created.");
     }
     public void update(){
         hp = tower.getCurHp();

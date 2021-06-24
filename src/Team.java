@@ -8,7 +8,6 @@ public abstract class Team {
     protected World world;
     protected List<Sprite> units = new ArrayList<>();
     protected Tower tower;
-    protected TowerHpBar towerHpBar;
     protected Direction direction;
     protected int battleLine;
     protected int enemyBattleLine;
@@ -47,7 +46,7 @@ public abstract class Team {
         }
         this.updateBattleLine();
         this.cdHandler.update();
-        this.towerHpBar.update();
+        this.tower.update();
     }
 
     protected void updateBattleLine() {
@@ -70,7 +69,6 @@ public abstract class Team {
         this.tower = new Tower(1000, 200, p);
         this.tower.setFace(this.direction);
         this.tower.setTeam(this);
-        this.towerHpBar = new TowerHpBar(this.tower);
     }
 
     public void addSprite(Sprite newSprite) {
@@ -125,7 +123,6 @@ public abstract class Team {
 
     public void render(Graphics g) {
         this.tower.render(g);
-        this.towerHpBar.render(g);
         for(int i = 0; i < this.units.size(); i++) {
             this.units.get(i).render(g);
         }
