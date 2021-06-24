@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Iterator;
 import java.util.Map;
 import java.awt.Point;
 
@@ -29,27 +30,27 @@ public class Computer extends Team {
     }   
 
     private void tryAct() {
-        if(this.nextTarget == this.numChoices - 1) {
-            if(this.money >= this.levelCost) {
-                this.levelUp();
-                this.nextTarget = this.chooseTarget();
-            }
-        }else {
-            UnitCreator target = new NinjaCreator();
-            int i = 0;
-            for(UnitCreator t : this.unitCreators.values()) {
-                if(i == nextTarget) {
-                    target = t;
-                    break;
-                }
-                i += 1;
-            }
-
-            if((this.getCD(target) == 0) && (this.money >= target.getCost())) {
-                this.createSprite(target);
-                this.nextTarget = this.chooseTarget();
-            }
+        Boolean done = (this.nextTarget == this.numChoices - 1)? this.tryLevelUp() : this.trySummon();
+        if(done) {
+            this.nextTarget = this.chooseTarget();
         }
         return;
+    }
+
+    private boolean tryLevelUp() {        
+        if(this.money < this.levelCost) {
+            return false;
+        }
+        this.levelUp();
+        return true;
+    }
+
+    private boolean trySummon() {
+        UnitCreator target = (UnitCreator)this.unitCreators.values().toArray()[nextTarget];
+        if((this.getCD(target) > 0) || (this.money < target.getCost())){
+            return false;
+        }
+        this.createSprite(target);
+        return true;
     }
 }

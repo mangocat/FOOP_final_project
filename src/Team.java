@@ -15,7 +15,7 @@ public abstract class Team {
     protected int level;
     protected int levelCost;
     protected Map<String, UnitCreator> unitCreators;
-    protected summonCDHandler cdHandler;
+    protected SummonCoolDownHandler cdHandler;
 
     public Team(Map<String, UnitCreator> unitCreators) {
         this.money = 0;
@@ -35,7 +35,7 @@ public abstract class Team {
         for(UnitCreator sc : this.unitCreators.values()) {
             CDs.put(sc, 0);
         }
-        this.cdHandler = new summonCDHandler(CDs); 
+        this.cdHandler = new SummonCoolDownHandler(CDs); 
     }
 
     public void update(int enemyBattleLine) {
