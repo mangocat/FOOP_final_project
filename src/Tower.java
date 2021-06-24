@@ -45,6 +45,10 @@ public class Tower extends Sprite{
         setRange(new Rectangle((int)location.getX(), (int)location.getY(), width, height));
     }
 
+    public int getCurHp(){
+        return hp;
+    }
+
     @Override
     public void update() {
         currentAttackCd -= 1;
