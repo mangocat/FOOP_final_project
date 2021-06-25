@@ -1,9 +1,9 @@
 import java.util.Random;
+import java.util.Iterator;
 import java.util.Map;
 import java.awt.Point;
 
 public class Computer extends Team {
-    private Random random;
     private int numChoices;
     private int nextTarget;
 
@@ -12,13 +12,12 @@ public class Computer extends Team {
         this.direction = Direction.RIGHT;
         this.setTower(new Point(50, 250)); // set face
         this.updateBattleLine();
-        this.random = new Random();
         this.numChoices = this.unitCreators.size() + 1; 
         this.nextTarget = 0;
     }
 
     private int chooseTarget() {
-        return random.nextInt(numChoices);
+        return this.random.nextInt(numChoices);
     }
 
     @Override
@@ -29,27 +28,27 @@ public class Computer extends Team {
     }   
 
     private void tryAct() {
-        if(this.nextTarget == this.numChoices - 1) {
-            if(this.money >= this.levelCost) {
-                this.levelUp();
-                this.nextTarget = this.chooseTarget();
-            }
-        }else {
-            UnitCreator target = new NinjaCreator();
-            int i = 0;
-            for(UnitCreator t : this.unitCreators.values()) {
-                if(i == nextTarget) {
-                    target = t;
-                    break;
-                }
-                i += 1;
-            }
-
-            if((this.getCD(target) == 0) && (this.money >= target.getCost())) {
-                this.createSprite(target);
-                this.nextTarget = this.chooseTarget();
-            }
+        Boolean done = (this.nextTarget == this.numChoices - 1)? this.tryLevelUp() : this.trySummon();
+        if(done) {
+            this.nextTarget = this.chooseTarget();
         }
         return;
+    }
+
+    private boolean tryLevelUp() {        
+        if(this.money < this.levelCost) {
+            return false;
+        }
+        this.levelUp();
+        return true;
+    }
+
+    private boolean trySummon() {
+        UnitCreator target = (UnitCreator)this.unitCreators.values().toArray()[nextTarget];
+        if((this.getCD(target) > 0) || (this.money < target.getCost())){
+            return false;
+        }
+        this.createSprite(target);
+        return true;
     }
 }

@@ -5,35 +5,39 @@ import java.awt.*;
 
 public class ButtonHandler {
     private Human human;
-    private Map<UnitCreator, Button> buttons;
+    private Map<UnitCreator, Button> ucToButtons;
+    private Map<UnitCreator, String> ucToStrings;
     private Button levelUpButton;
     
-    public ButtonHandler(Human human, Map<UnitCreator, Button> buttons, Button levelUpButton) {
+    public ButtonHandler(Human human, Map<UnitCreator, Button> ucToButtons, Map<UnitCreator, String> ucToStrings, Button levelUpButton) {
         this.human = human;
-        this.buttons = buttons;
+        this.ucToButtons = ucToButtons;
+        this.ucToStrings = ucToStrings;
         this.levelUpButton = levelUpButton;
     }
 
     public void update() {        
-        for(UnitCreator sc : this.buttons.keySet()) {
+        for(UnitCreator uc : this.ucToButtons.keySet()) {
             Boolean isAble = true;
-            if((this.human.getCD(sc) > 0) || (this.human.getMoney() < sc.getCost())) {
-                isAble = false;
-            }
-            this.buttons.get(sc).setEnabled(isAble);
+            int CD = this.human.getCD(uc);
+            int money = this.human.getMoney();
+            int cost = uc.getCost();
+         
+            this.ucToButtons.get(uc).setEnabled((CD == 0) && (money >= cost));
+            this.ucToButtons.get(uc).setText("<html>" + this.ucToStrings.get(uc) + "<br>" +
+                                            "Cost: " + cost + "<br>" + 
+                                            "CD: " + CD + "</html>");
         }
 
-        if(this.human.getMoney() < this.human.getLevelCost()) {
-            this.levelUpButton.setEnabled(false);
-        }else {
-            this.levelUpButton.setEnabled(true);
-        }
+        this.levelUpButton.setEnabled(this.human.getMoney() >= this.human.getLevelCost());
+        this.levelUpButton.setText("<html>" + "Level Up" + "<br>" + 
+                                "Cost: " + this.human.getLevelCost() + "</html>");
 
         return;
     }
 
-    public void setDisable(UnitCreator sc) {
-        this.buttons.get(sc).setEnabled(false);
+    public void setDisable(UnitCreator uc) {
+        this.ucToButtons.get(uc).setEnabled(false);
         return;
     }
 }
