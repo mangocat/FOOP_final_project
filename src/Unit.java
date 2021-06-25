@@ -8,6 +8,7 @@ public abstract class Unit extends Sprite {
     protected State currentState;
     protected int movementSpeed;
     protected int currentAttackCd;
+    protected StateHandler stateHandler;
 
     public Unit(int speed, int attackDist, int hp, int damage, int attackCd){
         movementSpeed = speed;

@@ -14,12 +14,13 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Ninja extends Unit {
+    static final int NINJA_HEIGHT = 200;
+    static final int NINJA_WIDTH = 185;
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 50;
     static final int maxHp = 100;
     static final int speed = 3;
     static final int ninjaDamage = 20;
-    protected StateHandler stateHandler;
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
@@ -35,6 +36,7 @@ public class Ninja extends Unit {
         int originalWidth = sample.getWidth(null);
         double scale = ((double)height)/originalHeight;
         width = (int)(originalWidth*scale);
+        //System.out.println("===================ninja width: " + width + ", height: " + height);
 
 
 

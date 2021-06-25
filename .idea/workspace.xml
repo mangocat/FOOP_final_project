@@ -6,6 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0a42707-3a3d-4142-a667-2a443594b3e8" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ninja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ninja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NinjaCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NinjaCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UnitCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitCreator.java" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/src/StateHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AttackState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AttackState.java" afterDir="false" />
@@ -15,6 +23,7 @@
       <change beforePath="$PROJECT_DIR$/src/Ninja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ninja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Unit.java" afterDir="false" />
+>>>>>>> 204f3c1c7000a78531f86faf0dddd0a7ca93aad7
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +56,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -77,17 +87,31 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1624621542331">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1624621542331" />
+=======
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1624532963990">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1624532963990" />
+>>>>>>> 204f3c1c7000a78531f86faf0dddd0a7ca93aad7
     <state x="326" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1624525639553">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="326" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1624525639553" />
+<<<<<<< HEAD
+    <state x="330" y="278" width="598" height="490" key="find.popup" timestamp="1624622061905">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="330" y="278" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1624622061905" />
+=======
     <state x="330" y="278" width="598" height="490" key="find.popup" timestamp="1624525800118">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="330" y="278" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1624525800118" />
+>>>>>>> 204f3c1c7000a78531f86faf0dddd0a7ca93aad7
   </component>
 </project>

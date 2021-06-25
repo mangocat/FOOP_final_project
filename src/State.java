@@ -34,7 +34,6 @@ public abstract class State {
             reset();
             currentPosition++;
             State next = stateHandler.nextState(this);
-            //if (unit.team instanceof Human) System.out.println("============attack next: " + next);
             if (!remains(next)) {
                 unit.setState(next);
                 next.update();
