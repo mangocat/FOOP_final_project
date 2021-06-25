@@ -20,7 +20,7 @@ public class SummonCoolDownHandler {
     }
 
     public void startCD(UnitCreator unitCreator) {
-        this.coolDowns.put(unitCreator, unitCreator.getCost()*7);
+        this.coolDowns.put(unitCreator, unitCreator.getCost()*2);
         return;
     }
 
