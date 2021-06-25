@@ -21,7 +21,6 @@ public class Ninja extends Unit {
     static final int maxHp = 100;
     static final int speed = 3;
     static final int ninjaDamage = 20;
-    //protected StateHandler stateHandler;
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
