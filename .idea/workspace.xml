@@ -6,12 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0a42707-3a3d-4142-a667-2a443594b3e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/StateHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AttackState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AttackState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeadState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeadState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IdleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IdleState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MoveState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoveState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ninja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ninja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Unit.java" afterDir="false" />
@@ -47,6 +42,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -85,9 +81,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="326" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1624525639553" />
-    <state x="330" y="278" width="598" height="490" key="find.popup" timestamp="1624525800118">
+    <state x="330" y="278" width="598" height="490" key="find.popup" timestamp="1624609647539">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="330" y="278" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1624525800118" />
+    <state x="330" y="278" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1624609647539" />
   </component>
 </project>
