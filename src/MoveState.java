@@ -27,34 +27,34 @@ public class MoveState extends State{
         unit.setFront(front);
         //System.out.println("===========after: "  + range  + "face: " + face);
     }
-/*    public void update(){
-        currentPosition++;
-        if (currentPosition >= images.size()) {
-            reset();
-            currentPosition++;
-            State next = stateHandler.nextState(this);
-            //if (unit.team instanceof Human) System.out.println("============move next: " + next);
-            if (!(next instanceof MoveState)) {
-                unit.setState(next);
-                next.update();
-            }
-        }
-*//*        State next = stateHandler.nextState(this);
-        if (!(next instanceof MoveState)) {
-            unit.setState(next);
-            next.update();
-        }*//*
+//     public void update(){
+//         currentPosition++;
+//         if (currentPosition >= images.size()) {
+//             reset();
+//             currentPosition++;
+//             State next = stateHandler.nextState(this);
+//             //if (unit.team instanceof Human) System.out.println("============move next: " + next);
+//             if (!(next instanceof MoveState)) {
+//                 unit.setState(next);
+//                 next.update();
+//             }
+//         }
+//         State next = stateHandler.nextState(this);
+//         if (!(next instanceof MoveState)) {
+//             unit.setState(next);
+//             next.update();
+//         }
 
 
-// step 1 , 判斷是否死亡
-//        // check if the unit is dead.
+// // step 1 , Check if unit dead
 //        if(!unit.isAlive()){
 //            State dead = unit.getState("dead");
 //            dead.update();
 //            unit.setState(dead);
 //            return;
 //        }
-// step 2 , 判斷是否從move 轉為 attack or idle
+
+// // step 2 , determine if change from move to attack or idle 
 //        Direction face = unit.getFace();
 //        Rectangle range = unit.getRange();
 //        int enemyBattleLine = unit.getEnemyBattleLine();
@@ -73,9 +73,11 @@ public class MoveState extends State{
 //            unit.setState(next);
 //            return;
 //        }
-// step 3 , currentPosition++
+
+// // step 3 , currentPosition++
 //        currentPosition++;
-// step 4 , 判斷currentPosition 是否超過 image size 加上判斷是否 change state
+
+// // step 4 , determine if currentPosition exceeds image size and if change state 
 //        if(currentPosition >= images.size()){
 //            reset();
 //            // if can move: move
@@ -89,7 +91,7 @@ public class MoveState extends State{
 //            next.update();
 //            unit.setState(next);
 //        }
-    }*/
+//     }
 
     @Override
     public boolean remains(State nextState) {

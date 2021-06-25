@@ -18,7 +18,7 @@ public abstract class Team {
     protected Map<String, UnitCreator> unitCreators;
     protected SummonCoolDownHandler cdHandler;
     protected Random random;
-    protected double updatePeroid = 0.2;
+    protected double updatePeriod = 0.1;
     protected double updateTime;
 
     public Team(Map<String, UnitCreator> unitCreators) {
@@ -46,8 +46,8 @@ public abstract class Team {
 
     public void update(int enemyBattleLine) {
         this.updateTime += 15.0/1000;
-        if(this.updateTime >= this.updatePeroid) {
-            this.updateTime -= this.updatePeroid;            
+        if(this.updateTime >= this.updatePeriod) {
+            this.updateTime -= this.updatePeriod;            
             this.money += Level.getIncome(this.level);
             this.cdHandler.update();
         }
