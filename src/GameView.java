@@ -43,7 +43,6 @@ public class GameView extends JFrame implements GameLoop.View{
 
 	@Override
 	public void render(World world){
-		System.err.println(this.gameplayPanel.buttonsPanel.getY());
 		this.gameplayPanel.render(world);
 	}
 
