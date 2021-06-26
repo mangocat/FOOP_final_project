@@ -173,7 +173,7 @@ public class GameView extends JFrame implements GameLoop.View{
 			panel.add(comp, cons);
 		}
 
-		private ActionListener getResetActionListener(){
+		private ActionListener getRestartActionListener(){
 			return new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					Container gameViewContentPane = GameView.this.getContentPane();
@@ -185,8 +185,8 @@ public class GameView extends JFrame implements GameLoop.View{
 
 		public GameOverPanel(){
 			this.resultText = new JLabel();
-			this.restartButton = new JButton("reset");
-			restartButton.addActionListener(getResetActionListener());
+			this.restartButton = new JButton("restart");
+			restartButton.addActionListener(getRestartActionListener());
 			this.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			c.weightx = 0.5;
