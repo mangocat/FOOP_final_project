@@ -13,6 +13,8 @@ public class Human extends Team {
         this.setTower(new Point(850, 250));
         this.updateBattleLine();
         // this.initButtonHandler(buttons);
+        this.getIncomePeriod = 0.2;
+        this.reduceCDPeriod = 0.3;
     }
 
     public void setButtons(List<Button> buttons){initButtonHandler(buttons);}
