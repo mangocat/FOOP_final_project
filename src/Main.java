@@ -12,8 +12,10 @@ public class Main{
         Map<String, UnitCreator> creatorMap = new HashMap<>();
         String ninjaName = "ninja";
         String robotName = "robot";
+        String knightName = "knight";
         creatorMap.put(ninjaName, new NinjaCreator());
         creatorMap.put(robotName, new RobotCreator());
+        creatorMap.put(knightName, new KnightCreator());
 
         // create human, computer
         Human human = new Human(creatorMap);
@@ -23,13 +25,14 @@ public class Main{
         world.setHuman(human);
         world.setComputer(computer);
 
-        // create game
+        // create gamegit 
         Game game = new Game(world);
 
         // create summon buttons
         List<Button> buttons = new ArrayList<>();
         buttons.add(new SummonButton(game, robotName));
         buttons.add(new SummonButton(game, ninjaName));
+        buttons.add(new SummonButton(game, knightName));
 
         // the last button should be level up button
         buttons.add(new LevelUpButton(game));
