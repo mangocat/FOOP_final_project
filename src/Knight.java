@@ -22,20 +22,21 @@ public class Knight extends Unit {
     static final int speed = 3;
     static final int knightDamage = 20;
 
-    public Knight() {
+    public Knight(double scale) {
         super(speed, attackDistance, maxHp, knightDamage, attackCd);
-        this.height = 100;
-        Image sample;
-        try{
-            Path samplePath = Paths.get("assets/knight/attack/0.png");
-            sample = ImageIO.read(samplePath.toFile());
-        }catch(IOException e){
-            throw new RuntimeException();
-        }
-        int originalHeight = sample.getHeight(null);
-        int originalWidth = sample.getWidth(null);
-        double scale = ((double)height)/originalHeight;
-        this.width = (int)(originalWidth*scale);
+        // this.height = 100;
+        // Image sample;
+        // try{
+        //     Path samplePath = Paths.get("assets/knight/attack/0.png");
+        //     sample = ImageIO.read(samplePath.toFile());
+        // }catch(IOException e){
+        //     throw new RuntimeException();
+        // }
+        // int originalHeight = sample.getHeight(null);
+        // int originalWidth = sample.getWidth(null);
+        // double scale = ((double)height)/originalHeight;
+        // this.width = (int)(originalWidth*scale);
+
         //System.out.println("===================knight width: " + width + ", height: " + height);
 
 

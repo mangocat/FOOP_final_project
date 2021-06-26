@@ -22,20 +22,21 @@ public class Plane extends Unit {
     static final int speed = 3;
     static final int planeDamage = 50;
 
-    public Plane() {
+    public Plane(double scale) {
         super(speed, attackDistance, maxHp, planeDamage, attackCd);
-        this.height = 200;
-        Image sample;
-        try{
-            Path samplePath = Paths.get("assets/plane/attack/0.png");
-            sample = ImageIO.read(samplePath.toFile());
-        }catch(IOException e){
-            throw new RuntimeException();
-        }
-        int originalHeight = sample.getHeight(null);
-        int originalWidth = sample.getWidth(null);
-        double scale = ((double)height)/originalHeight;
-        this.width = (int)(originalWidth*scale);
+        // this.height = 200;
+        // Image sample;
+        // try{
+        //     Path samplePath = Paths.get("assets/plane/attack/0.png");
+        //     sample = ImageIO.read(samplePath.toFile());
+        // }catch(IOException e){
+        //     throw new RuntimeException();
+        // }
+        // int originalHeight = sample.getHeight(null);
+        // int originalWidth = sample.getWidth(null);
+        // double scale = ((double)height)/originalHeight;
+        // this.width = (int)(originalWidth*scale);
+
         //System.out.println("===================Plane width: " + width + ", height: " + height);
 
 

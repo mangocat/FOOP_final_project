@@ -22,20 +22,21 @@ public class Robot extends Unit {
     static final int speed = 2;
     static final int robotDamage = 50;
 
-    public Robot() {
+    public Robot(double scale) {
         super(speed, attackDistance, maxHp, robotDamage, attackCd);
-        this.height = 100;
-        Image sample;
-        try{
-            Path samplePath = Paths.get("assets/robot/attack/0.png");
-            sample = ImageIO.read(samplePath.toFile());
-        }catch(IOException e){
-            throw new RuntimeException();
-        }
-        int originalHeight = sample.getHeight(null);
-        int originalWidth = sample.getWidth(null);
-        double scale = ((double)height)/originalHeight;
-        this.width = (int)(originalWidth*scale);
+        // this.height = 100;
+        // Image sample;
+        // try{
+        //     Path samplePath = Paths.get("assets/robot/attack/0.png");
+        //     sample = ImageIO.read(samplePath.toFile());
+        // }catch(IOException e){
+        //     throw new RuntimeException();
+        // }
+        // int originalHeight = sample.getHeight(null);
+        // int originalWidth = sample.getWidth(null);
+        // double scale = ((double)height)/originalHeight;
+        // this.width = (int)(originalWidth*scale);
+
         //System.out.println("===================ninja width: " + width + ", height: " + height);
 
 

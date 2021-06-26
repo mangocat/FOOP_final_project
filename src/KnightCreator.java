@@ -1,28 +1,45 @@
 import java.awt.*;
-import java.util.Random;
+import javax.imageio.ImageIO;
+import java.nio.file.*;
+import java.io.IOException;
 
 public class KnightCreator implements UnitCreator {
+    static final int KNIGHT_HEIGHT = 125;
+    private final int knightWidth;
+    private final double knightScale;
+
+    public KnightCreator(){
+        Image sample;
+        try{
+            Path samplePath = Paths.get("assets/knight/idle/0.png");
+            sample = ImageIO.read(samplePath.toFile());
+        }catch(IOException e){
+            throw new RuntimeException();
+        }
+        int originalHeight = sample.getHeight(null);
+        int originalWidth = sample.getWidth(null);
+        this.knightScale = ((double)KNIGHT_HEIGHT)/originalHeight;
+        this.knightWidth = (int)(knightScale*originalWidth);
+    }
 
     @Override
     public Unit createUnit() {
-        return new Knight();
+        return new Knight(knightScale);
     }
 
     @Override
     public Unit createUnit(Team team) {
         //System.out.println("=============creating ninja.....");
-        Knight newKnight = new Knight();
+        Knight newKnight = new Knight(knightScale);
         newKnight.setFace(team.direction);
         newKnight.setTeam(team);
-        int width = newKnight.getWidth();
-        int height = newKnight.getHeight();
-        newKnight.setRange(getKnightRange(team, width, height));
+        newKnight.setRange(getKnightRange(team, knightWidth, KNIGHT_HEIGHT));
         return newKnight;
     }
 
     @Override
     public int getCost(){
-        return 50;
+        return 75;
     }
 
     private Rectangle getKnightRange(Team team, int width, int height) {

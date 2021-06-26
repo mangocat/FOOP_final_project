@@ -1,22 +1,41 @@
 import java.awt.*;
-import java.util.Random;
+import javax.imageio.ImageIO;
+import java.nio.file.*;
+import java.io.IOException;
+
 
 public class NinjaCreator implements UnitCreator {
+    static final int NINJA_HEIGHT = 75;
+    private final int ninjaWidth;
+    private final double ninjaScale;
+
+    public NinjaCreator(){
+        Image sample;
+        try{
+            Path samplePath = Paths.get("assets/ninja/idle/0.png");
+            sample = ImageIO.read(samplePath.toFile());
+        }catch(IOException e){
+            throw new RuntimeException();
+        }
+        int originalHeight = sample.getHeight(null);
+        int originalWidth = sample.getWidth(null);
+        this.ninjaScale = ((double)NINJA_HEIGHT)/originalHeight;
+        this.ninjaWidth = (int)(ninjaScale*originalWidth);
+    }
+
 
     @Override
     public Unit createUnit() {
-        return new Ninja();
+        return new Ninja(ninjaScale);
     }
 
     @Override
     public Unit createUnit(Team team) {
         //System.out.println("=============creating ninja.....");
-        Ninja newNinja = new Ninja();
+        Ninja newNinja = new Ninja(ninjaScale);
         newNinja.setFace(team.direction);
         newNinja.setTeam(team);
-        int width = newNinja.getWidth();
-        int height = newNinja.getHeight();
-        newNinja.setRange(getNinjaRange(team, width, height));
+        newNinja.setRange(getNinjaRange(team, ninjaWidth, NINJA_HEIGHT));
         return newNinja;
     }
 

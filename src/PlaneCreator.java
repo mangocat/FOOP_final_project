@@ -1,22 +1,39 @@
 import java.awt.*;
-import java.util.Random;
+import javax.imageio.ImageIO;
+import java.nio.file.*;
+import java.io.IOException;
 
 public class PlaneCreator implements UnitCreator {
+    static final int PLANE_HEIGHT = 125;
+    private final int planeWidth;
+    private final double planeScale;
+
+    public PlaneCreator(){
+        Image sample;
+        try{
+            Path samplePath = Paths.get("assets/plane/idle/0.png");
+            sample = ImageIO.read(samplePath.toFile());
+        }catch(IOException e){
+            throw new RuntimeException();
+        }
+        int originalHeight = sample.getHeight(null);
+        int originalWidth = sample.getWidth(null);
+        this.planeScale = ((double)PLANE_HEIGHT)/originalHeight;
+        this.planeWidth = (int)(planeScale*originalWidth);
+    }
 
     @Override
     public Unit createUnit() {
-        return new Plane();
+        return new Plane(planeScale);
     }
 
     @Override
     public Unit createUnit(Team team) {
         //System.out.println("=============creating ninja.....");
-        Plane newPlane = new Plane();
+        Plane newPlane = new Plane(planeScale);
         newPlane.setFace(team.direction);
         newPlane.setTeam(team);
-        int width = newPlane.getWidth();
-        int height = newPlane.getHeight();
-        newPlane.setRange(getPlaneRange(team, width, height));
+        newPlane.setRange(getPlaneRange(team, planeWidth, PLANE_HEIGHT));
         return newPlane;
     }
 
