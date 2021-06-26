@@ -1,9 +1,7 @@
 import java.util.Collection;
 
 public class Plane extends Unit {
-    // static final int PLANE_HEIGHT = 200;
-    // static final int PLANE_WIDTH = 185;
-    static final int attackCd = 100; // attack every 30 updates
+    static final int attackCd = 100; 
     static final int attackDistance = 300;
     static final int maxHp = 100;
     static final int speed = 1;

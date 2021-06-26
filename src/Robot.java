@@ -1,10 +1,8 @@
 import java.util.Collection;
 
 public class Robot extends Unit {
-    // static final int ROBOT_HEIGHT = 300;
-    // static final int ROBOT_WIDTH = 185;
-    static final int attackCd = 100; // attack every 30 updates
-    static final int attackDistance = 100;
+    static final int attackCd = 100; 
+    static final int attackDistance = 30;
     static final int maxHp = 300;
     static final int speed = 1;
     static final int robotDamage = 10;

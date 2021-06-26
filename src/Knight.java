@@ -1,9 +1,7 @@
 import java.util.Collection;
 
 public class Knight extends Unit {
-    // static final int KNIGHT_HEIGHT = 200;
-    // static final int KNIGHT_WIDTH = 185;
-    static final int attackCd = 100; // attack every 30 updates
+    static final int attackCd = 100; 
     static final int attackDistance = 50;
     static final int maxHp = 100;
     static final int speed = 1;
