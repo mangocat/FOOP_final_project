@@ -46,6 +46,7 @@ public abstract class Team {
         }
         this.updateBattleLine();
         this.cdHandler.update();
+        this.tower.update();
     }
 
     protected void updateBattleLine() {
