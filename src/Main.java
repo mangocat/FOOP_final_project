@@ -1,5 +1,5 @@
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class Main{
         World world = new World();
 
         // create unit creators
-        Map<String, UnitCreator> creatorMap = new HashMap<>();
+        Map<String, UnitCreator> creatorMap = new LinkedHashMap<>();
         String ninjaName = "ninja";
         String robotName = "robot";
         String knightName = "knight";
@@ -32,10 +32,10 @@ public class Main{
 
         // create summon buttons
         List<Button> buttons = new ArrayList<>();
-        buttons.add(new SummonButton(game, planeName));
-        buttons.add(new SummonButton(game, robotName));
         buttons.add(new SummonButton(game, ninjaName));
+        buttons.add(new SummonButton(game, robotName));
         buttons.add(new SummonButton(game, knightName));
+        buttons.add(new SummonButton(game, planeName));
 
         // the last button should be level up button
         buttons.add(new LevelUpButton(game));

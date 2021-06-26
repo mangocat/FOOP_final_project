@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +18,8 @@ public class Human extends Team {
     public void setButtons(List<Button> buttons){initButtonHandler(buttons);}
 
     private void initButtonHandler(List<Button> buttons) {
-        Map<UnitCreator, Button> ucToButtons = new HashMap<>(); 
-        Map<UnitCreator, String> ucToStrings = new HashMap<>(); 
+        Map<UnitCreator, Button> ucToButtons = new LinkedHashMap<>(); 
+        Map<UnitCreator, String> ucToStrings = new LinkedHashMap<>(); 
         Iterator<Button> buttonsIt = buttons.iterator();
         for(Map.Entry<String, UnitCreator> entry : this.unitCreators.entrySet()) {
             ucToButtons.put(entry.getValue(), buttonsIt.next());

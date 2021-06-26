@@ -21,5 +21,6 @@ public class TowerHpBar {
         g.fillRect(range.x, y, range.width, height);
         g.setColor(Color.green);
         g.fillRect(range.x, y, greenWidth, height);
+        g.setColor(Color.black);
     }
 }
