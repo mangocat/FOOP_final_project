@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.awt.Point;
 
@@ -20,7 +21,23 @@ public class Computer extends Team {
     }
 
     private int chooseTarget() {
-        return this.random.nextInt(numChoices);
+        List<Double> weight = new ArrayList<Double>();
+        for(UnitCreator uc : this.unitCreators.values()) {
+            weight.add(1.0/uc.getCost());
+        }
+        weight.add(1.0/this.getLevelCost());
+        
+        for(int i = 1; i < weight.size(); i++) {
+            weight.set(i, weight.get(i) + weight.get(i-1));
+        }
+
+        double randomRes = this.random.nextDouble()*weight.get(weight.size()-1);
+        for(int i = 0; i < weight.size(); i++) {
+            if(randomRes < weight.get(i)) {
+                return i;
+            }
+        }
+        return weight.size()-1;
     }
 
     @Override
