@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.awt.Point;
@@ -17,7 +15,7 @@ public class Computer extends Team {
         this.numChoices = this.unitCreators.size() + 1; 
         this.nextTarget = 0;
         this.getIncomePeriod = 0.15;
-        this.reduceCDPeriod = 0.2;
+        this.reduceCDPeriod = 0.15;
     }
 
     private int chooseTarget() {

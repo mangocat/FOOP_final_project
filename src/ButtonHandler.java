@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.awt.*;
 
 public class ButtonHandler {
     private Human human;
@@ -18,7 +15,6 @@ public class ButtonHandler {
 
     public void update() {        
         for(UnitCreator uc : this.ucToButtons.keySet()) {
-            Boolean isAble = true;
             int CD = this.human.getCD(uc);
             int money = this.human.getMoney();
             int cost = uc.getCost();

@@ -12,9 +12,8 @@ public class Human extends Team {
         this.direction = Direction.LEFT;
         this.setTower(new Point(850, 250));
         this.updateBattleLine();
-        // this.initButtonHandler(buttons);
         this.getIncomePeriod = 0.2;
-        this.reduceCDPeriod = 0.25;
+        this.reduceCDPeriod = 0.2;
     }
 
     public void setButtons(List<Button> buttons){initButtonHandler(buttons);}
@@ -43,17 +42,6 @@ public class Human extends Team {
         g.drawString("Level: "+this.level, 850, 30);
         g.drawString("Money: "+this.getMoney(), 850, 60);
     }
-
-    // protected void updateBattleLine() {
-    //     this.battleLine = this.tower.getFront();
-    //     for(Sprite s : this.units) {
-    //         int frontX = s.getFront();
-    //         if(frontX > this.battleLine) {
-    //             this.battleLine = frontX;
-    //         }
-    //     }
-    //     return;
-    // }
 
     @Override
     public void createSprite(String spriteName) {
