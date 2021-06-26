@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SummonCoolDownHandler {    
@@ -9,7 +9,7 @@ public class SummonCoolDownHandler {
     }
 
     public void update() {
-        Map<UnitCreator, Integer> newCDs = new HashMap<>();
+        Map<UnitCreator, Integer> newCDs = new LinkedHashMap<>();
         for(Map.Entry<UnitCreator, Integer> set : this.coolDowns.entrySet()) {
             Integer cd = set.getValue();
             cd = (cd > 0)? cd-1 : cd;

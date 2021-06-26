@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -37,7 +37,7 @@ public abstract class Team {
     }
 
     private void initCD() {
-        Map<UnitCreator, Integer> CDs = new HashMap<>();
+        Map<UnitCreator, Integer> CDs = new LinkedHashMap<>();
         for(UnitCreator sc : this.unitCreators.values()) {
             CDs.put(sc, 0);
         }
