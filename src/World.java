@@ -28,4 +28,11 @@ public class World {
             return human.getSprites().stream().filter(s -> (s.getFront() - sprite.getFront()) <= range).collect(toSet());
         }
     }
+
+    public void reset(){
+        human.reset();
+        computer.reset();
+        human.setEnemyBattleLine(computer.getEnemyBattleLine());
+        computer.setEnemyBattleLine(human.getEnemyBattleLine());
+    }
 }

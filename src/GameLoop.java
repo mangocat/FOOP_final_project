@@ -52,6 +52,10 @@ public abstract class GameLoop {
 		}
 	}
 
+	public void restart(){
+		this.getWorld().reset();
+		new Thread(this::gameLoop).start();
+	}
 
 	public interface View {
 		void render(World world);

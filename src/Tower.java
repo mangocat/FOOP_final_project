@@ -21,9 +21,11 @@ public class Tower extends Sprite{
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
     private final Image image;
+    private int maxHp;
 
     public Tower(int hp, int attackDistance, Point location){
         this.hp = hp;
+        this.maxHp = hp;
         this.attackDistance = attackDistance;
         this.location = location;
         this.currentAttackCd = 0;
@@ -74,5 +76,9 @@ public class Tower extends Sprite{
         }else{
             g.drawImage(image, range.x, range.y, range.width, range.height, null);
         }
+    }
+
+    public void reset(){
+        this.hp = this.maxHp;
     }
 }
