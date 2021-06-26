@@ -20,7 +20,7 @@ public class PlaneCreator implements UnitCreator {
 
     @Override
     public int getCost(){
-        return 500;
+        return 300;
     }
 
     private Rectangle getPlaneRange(Team team) {
