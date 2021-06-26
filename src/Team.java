@@ -30,7 +30,6 @@ public abstract class Team {
         this.unitCreators = unitCreators;
         this.initCD();
         this.random = new Random();
-        // unitCreators.put("Ninja", new NinjaCreator());
     }
 
     public void setWorld(World w){
@@ -47,25 +46,18 @@ public abstract class Team {
 
     public void update(int enemyBattleLine) {
         this.updateTime += this.delay;
-        if(this.updateTime % this.getIncomePeriod < this.delay) {
+        if((this.updateTime % this.getIncomePeriod) < this.delay) {
             this.money += Level.getIncome(this.level);
         }
-        if(this.updateTime % this.reduceCDPeriod < this.delay) {
+        if((this.updateTime % this.reduceCDPeriod) < this.delay) {
             this.cdHandler.update();
         }
-        /*
-        if(this.updateTime >= this.updatePeriod) {
-            this.updateTime -= this.updatePeriod;            
-            this.money += Level.getIncome(this.level);
-            this.cdHandler.update();
-        }
-        */
+
         this.enemyBattleLine = enemyBattleLine;
         for(int i = 0; i < this.units.size(); i++) {
             this.units.get(i).update();
         }
         this.updateBattleLine();
-        this.cdHandler.update();
         this.tower.update();
     }
 
@@ -93,14 +85,6 @@ public abstract class Team {
     }
 
     public void addSprite(Sprite newSprite) {
-//        newSprite.setFace(this.direction);
-//        // newSprite.setLocation(this.tower.getRange().getLocation());
-//        newSprite.setTeam(this);
-//
-//        int x = (int)this.tower.getRange().getLocation().getX();
-//        int y = (int)this.tower.getRange().getLocation().getY() + this.tower.getHeight() - newSprite.getHeight();
-//        int dither = this.random.nextInt(16) - 8;
-//        newSprite.setRange(new Rectangle(new Point(x, y+dither), new Dimension(newSprite.getWidth(), newSprite.getHeight())));
         this.units.add(newSprite);
         return;
     }
