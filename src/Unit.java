@@ -8,6 +8,7 @@ public abstract class Unit extends Sprite {
     protected State currentState;
     protected int movementSpeed;
     protected int currentAttackCd;
+    protected StateHandler stateHandler;
 
     public Unit(int speed, int attackDist, int hp, int damage, int attackCd){
         movementSpeed = speed;
@@ -30,7 +31,10 @@ public abstract class Unit extends Sprite {
         currentState.render(g);
     }
 
-    public void setState(State state){ currentState = state; }
+    public void setState(State state){
+        state.reset();
+        currentState = state;
+    }
 
     public State getState(String stateName){
         return stateMap.get(stateName);

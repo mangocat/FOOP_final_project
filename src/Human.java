@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.awt.*;
@@ -17,13 +18,14 @@ public class Human extends Team {
     public void setButtons(List<Button> buttons){initButtonHandler(buttons);}
 
     private void initButtonHandler(List<Button> buttons) {
-        Map<UnitCreator, Button> scToButtons = new HashMap<>(); 
-        int cur = 0;       
-        for(UnitCreator sc : this.unitCreators.values()) {
-            scToButtons.put(sc, buttons.get(cur));
-            cur += 1;
+        Map<UnitCreator, Button> ucToButtons = new HashMap<>(); 
+        Map<UnitCreator, String> ucToStrings = new HashMap<>(); 
+        Iterator<Button> buttonsIt = buttons.iterator();
+        for(Map.Entry<String, UnitCreator> entry : this.unitCreators.entrySet()) {
+            ucToButtons.put(entry.getValue(), buttonsIt.next());
+            ucToStrings.put(entry.getValue(), entry.getKey());
         }
-        this.buttonHandler = new ButtonHandler(this, scToButtons, buttons.get(buttons.size()-1));
+        this.buttonHandler = new ButtonHandler(this, ucToButtons, ucToStrings, buttons.get(buttons.size()-1));
     }
 
     @Override
@@ -33,6 +35,13 @@ public class Human extends Team {
         return;
     }   
     
+    @Override
+    public void render(Graphics g) {
+        super.render(g);
+        g.drawString("Level: "+this.level, 850, 30);
+        g.drawString("Money: "+this.getMoney(), 850, 60);
+    }
+
     // protected void updateBattleLine() {
     //     this.battleLine = this.tower.getFront();
     //     for(Sprite s : this.units) {
