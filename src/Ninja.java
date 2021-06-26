@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Ninja extends Unit {
-    static final int NINJA_HEIGHT = 200;
-    static final int NINJA_WIDTH = 185;
+    // static final int NINJA_HEIGHT = 200;
+    // static final int NINJA_WIDTH = 185;
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 10;
     static final int maxHp = 100;
@@ -24,7 +24,7 @@ public class Ninja extends Unit {
 
     public Ninja() {
         super(speed, attackDistance, maxHp, ninjaDamage, attackCd);
-        this.height = 200;
+        this.height = 75;
         Image sample;
         try{
             Path samplePath = Paths.get("assets/ninja/idle/0.png");
@@ -35,7 +35,7 @@ public class Ninja extends Unit {
         int originalHeight = sample.getHeight(null);
         int originalWidth = sample.getWidth(null);
         double scale = ((double)height)/originalHeight;
-        width = (int)(originalWidth*scale);
+        this.width = (int)(originalWidth*scale);
         //System.out.println("===================ninja width: " + width + ", height: " + height);
 
 

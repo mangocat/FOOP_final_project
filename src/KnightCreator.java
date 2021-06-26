@@ -14,7 +14,9 @@ public class KnightCreator implements UnitCreator {
         Knight newKnight = new Knight();
         newKnight.setFace(team.direction);
         newKnight.setTeam(team);
-        newKnight.setRange(getKnightRange(team));
+        int width = newKnight.getWidth();
+        int height = newKnight.getHeight();
+        newKnight.setRange(getKnightRange(team, width, height));
         return newKnight;
     }
 
@@ -23,11 +25,11 @@ public class KnightCreator implements UnitCreator {
         return 50;
     }
 
-    private Rectangle getKnightRange(Team team) {
+    private Rectangle getKnightRange(Team team, int width, int height) {
         int x = (int)team.tower.getRange().getLocation().getX();
-        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - Knight.KNIGHT_HEIGHT;
+        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
-        return new Rectangle(new Point(x, y+dither), new Dimension(Knight.KNIGHT_WIDTH, Knight.KNIGHT_HEIGHT));
+        return new Rectangle(new Point(x, y+dither), new Dimension(width, height));
     }
 }

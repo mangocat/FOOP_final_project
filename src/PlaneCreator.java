@@ -14,7 +14,9 @@ public class PlaneCreator implements UnitCreator {
         Plane newPlane = new Plane();
         newPlane.setFace(team.direction);
         newPlane.setTeam(team);
-        newPlane.setRange(getPlaneRange(team));
+        int width = newPlane.getWidth();
+        int height = newPlane.getHeight();
+        newPlane.setRange(getPlaneRange(team, width, height));
         return newPlane;
     }
 
@@ -23,11 +25,11 @@ public class PlaneCreator implements UnitCreator {
         return 300;
     }
 
-    private Rectangle getPlaneRange(Team team) {
+    private Rectangle getPlaneRange(Team team, int width, int height) {
         int x = (int)team.tower.getRange().getLocation().getX();
-        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - Plane.PLANE_HEIGHT;
+        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
-        return new Rectangle(new Point(x, y+dither-200), new Dimension(Plane.PLANE_WIDTH, Plane.PLANE_HEIGHT));
+        return new Rectangle(new Point(x, y+dither-200), new Dimension(width, height));
     }
 }

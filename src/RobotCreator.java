@@ -14,7 +14,9 @@ public class RobotCreator implements UnitCreator {
         Robot newRobot = new Robot();
         newRobot.setFace(team.direction);
         newRobot.setTeam(team);
-        newRobot.setRange(getRobotRange(team));
+        int width = newRobot.getWidth();
+        int height = newRobot.getHeight();
+        newRobot.setRange(getRobotRange(team, width, height));
         return newRobot;
     }
 
@@ -23,11 +25,11 @@ public class RobotCreator implements UnitCreator {
         return 100;
     }
 
-    private Rectangle getRobotRange(Team team) {
+    private Rectangle getRobotRange(Team team, int width, int height) {
         int x = (int) team.tower.getRange().getLocation().getX();
-        int y = (int) team.tower.getRange().getLocation().getY() + team.tower.getHeight() - Robot.ROBOT_HEIGHT;
+        int y = (int) team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
-        return new Rectangle(new Point(x, y + dither), new Dimension(Robot.ROBOT_WIDTH, Robot.ROBOT_HEIGHT));
+        return new Rectangle(new Point(x, y + dither), new Dimension(width, height));
     }
 }

@@ -9,6 +9,8 @@ public abstract class Unit extends Sprite {
     protected int movementSpeed;
     protected int currentAttackCd;
     protected StateHandler stateHandler;
+    protected int height;
+    protected int width;
 
     public Unit(int speed, int attackDist, int hp, int damage, int attackCd){
         movementSpeed = speed;
@@ -42,6 +44,14 @@ public abstract class Unit extends Sprite {
 
     public int getMovementSpeed() {
         return movementSpeed;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+    public int getWidth(){
+        return width;
     }
 
     public void setCurrentAttackCd(int cd) { currentAttackCd = cd; }

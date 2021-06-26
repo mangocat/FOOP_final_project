@@ -14,7 +14,9 @@ public class NinjaCreator implements UnitCreator {
         Ninja newNinja = new Ninja();
         newNinja.setFace(team.direction);
         newNinja.setTeam(team);
-        newNinja.setRange(getNinjaRange(team));
+        int width = newNinja.getWidth();
+        int height = newNinja.getHeight();
+        newNinja.setRange(getNinjaRange(team, width, height));
         return newNinja;
     }
 
@@ -23,11 +25,11 @@ public class NinjaCreator implements UnitCreator {
         return 50;
     }
 
-    private Rectangle getNinjaRange(Team team) {
+    private Rectangle getNinjaRange(Team team, int width, int height) {
         int x = (int)team.tower.getRange().getLocation().getX();
-        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - Ninja.NINJA_HEIGHT;
+        int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
-        return new Rectangle(new Point(x, y+dither), new Dimension(Ninja.NINJA_WIDTH, Ninja.NINJA_HEIGHT));
+        return new Rectangle(new Point(x, y+dither), new Dimension(width, height));
     }
 }

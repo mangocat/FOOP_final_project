@@ -16,7 +16,7 @@ import java.nio.file.DirectoryStream;
 public class Tower extends Sprite{
     private TowerHpBar hpBar;
     private int attackDistance;
-    public static final int damage = 10;
+    public static final int damage = 50;
     // private Point location;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;

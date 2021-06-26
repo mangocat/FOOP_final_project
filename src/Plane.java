@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Plane extends Unit {
-    static final int PLANE_HEIGHT = 200;
-    static final int PLANE_WIDTH = 185;
+    // static final int PLANE_HEIGHT = 200;
+    // static final int PLANE_WIDTH = 185;
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 300;
     static final int maxHp = 100;
@@ -35,7 +35,7 @@ public class Plane extends Unit {
         int originalHeight = sample.getHeight(null);
         int originalWidth = sample.getWidth(null);
         double scale = ((double)height)/originalHeight;
-        width = (int)(originalWidth*scale);
+        this.width = (int)(originalWidth*scale);
         //System.out.println("===================Plane width: " + width + ", height: " + height);
 
 

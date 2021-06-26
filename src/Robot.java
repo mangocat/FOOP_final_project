@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Robot extends Unit {
-    static final int ROBOT_HEIGHT = 300;
-    static final int ROBOT_WIDTH = 185;
+    // static final int ROBOT_HEIGHT = 300;
+    // static final int ROBOT_WIDTH = 185;
     static final int attackCd = 200; // attack every 30 updates
     static final int attackDistance = 60;
     static final int maxHp = 300;
@@ -24,7 +24,7 @@ public class Robot extends Unit {
 
     public Robot() {
         super(speed, attackDistance, maxHp, robotDamage, attackCd);
-        this.height = 300;
+        this.height = 100;
         Image sample;
         try{
             Path samplePath = Paths.get("assets/robot/attack/0.png");
@@ -35,7 +35,7 @@ public class Robot extends Unit {
         int originalHeight = sample.getHeight(null);
         int originalWidth = sample.getWidth(null);
         double scale = ((double)height)/originalHeight;
-        width = (int)(originalWidth*scale);
+        this.width = (int)(originalWidth*scale);
         //System.out.println("===================ninja width: " + width + ", height: " + height);
 
 

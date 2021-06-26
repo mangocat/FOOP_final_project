@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Knight extends Unit {
-    static final int KNIGHT_HEIGHT = 200;
-    static final int KNIGHT_WIDTH = 185;
+    // static final int KNIGHT_HEIGHT = 200;
+    // static final int KNIGHT_WIDTH = 185;
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 50;
     static final int maxHp = 100;
@@ -24,7 +24,7 @@ public class Knight extends Unit {
 
     public Knight() {
         super(speed, attackDistance, maxHp, knightDamage, attackCd);
-        this.height = 200;
+        this.height = 100;
         Image sample;
         try{
             Path samplePath = Paths.get("assets/knight/attack/0.png");
@@ -35,7 +35,7 @@ public class Knight extends Unit {
         int originalHeight = sample.getHeight(null);
         int originalWidth = sample.getWidth(null);
         double scale = ((double)height)/originalHeight;
-        width = (int)(originalWidth*scale);
+        this.width = (int)(originalWidth*scale);
         //System.out.println("===================knight width: " + width + ", height: " + height);
 
 
