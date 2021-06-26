@@ -54,7 +54,7 @@ public class AttackState extends State{
             return;
         }
         Collection<Sprite> attackableUnit = unit.getTeam().getWorld().getSprites(unit, unit.getFace(), unit.getAttackDistance());
-        System.out.printf("attackable unit size : %d\n", attackableUnit.size());
+        //System.out.printf("attackable unit size : %d\n", attackableUnit.size());
         Sprite targetSprite = null;
         int minDistance = 10000;
         for(Sprite sprite : attackableUnit){

@@ -29,10 +29,11 @@ public abstract class State {
     public void render(Graphics g){
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();
+        Image currentImage = images.get(currentPosition);
         if(face == Direction.LEFT){
-            g.drawImage(images.get(currentPosition), range.x + range.width, range.y, -range.width, range.height, null);
+            g.drawImage(currentImage, range.x + range.width, range.y, -currentImage.getWidth(null), currentImage.getHeight(null), null);
         }else{
-            g.drawImage(images.get(currentPosition), range.x, range.y, range.width, range.height, null);
+            g.drawImage(currentImage, range.x, range.y, currentImage.getWidth(null), currentImage.getHeight(null), null);
         }
     }
     public boolean finished(){

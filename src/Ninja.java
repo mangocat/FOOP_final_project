@@ -13,7 +13,7 @@ import java.nio.file.DirectoryStream;
 
 public class Ninja extends Unit {
     static final int attackCd = 100; // attack every 30 updates
-    static final int attackDistance = 50;
+    static final int attackDistance = 10;
     static final int maxHp = 100;
     static final int speed = 3;
     static final int ninjaDamage = 20;
@@ -23,7 +23,7 @@ public class Ninja extends Unit {
         this.height = 200;
         Image sample;
         try{
-            Path samplePath = Paths.get("assets/ninja/attack/0.png");
+            Path samplePath = Paths.get("assets/ninja/idle/0.png");
             sample = ImageIO.read(samplePath.toFile());
         }catch(IOException e){
             throw new RuntimeException();
