@@ -34,7 +34,6 @@ public class KnightCreator implements UnitCreator {
         newKnight.setFace(team.direction);
         newKnight.setTeam(team);
         newKnight.setRange(getKnightRange(team, knightWidth, KNIGHT_HEIGHT));
-        System.out.printf("Team front %d, Knight range x : %d, Knight front : %d%n", team.tower.getFront(), newKnight.getRange().x, newKnight.getFront());
         return newKnight;
     }
 
