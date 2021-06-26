@@ -39,6 +39,7 @@ public class Human extends Team {
     @Override
     public void render(Graphics g) {
         super.render(g);
+        g.setColor(Color.BLACK);  
         g.drawString("Level: "+this.level, 850, 30);
         g.drawString("Money: "+this.getMoney(), 850, 60);
     }

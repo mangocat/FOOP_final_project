@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 public class Tower extends Sprite{
     private TowerHpBar hpBar;
     private int maxHp = 1000;
-    public static final int attackDistance = 300;
     public static final int damage = 50;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
@@ -20,6 +19,7 @@ public class Tower extends Sprite{
         this.location = location;
         this.currentAttackCd = 0;
         this.height = 200;
+        this.attackDistance = 300;
         Image tmpImage;
         try{
             Path imagePath = Paths.get("assets/tower/0.png");
@@ -50,10 +50,12 @@ public class Tower extends Sprite{
         currentAttackCd -= 1;
         if(currentAttackCd <= 0){
             Collection<Sprite> attackableUnit = team.getWorld().getSprites(this, face, attackDistance);
+            if(attackableUnit.size() > 0) {
+                currentAttackCd = maxAttackCd; // set cd to max value
+            }
             for(Sprite sprite : attackableUnit){
                 sprite.takeDamage(damage);
             }
-            currentAttackCd = maxAttackCd; // set cd to max value
         }
         hpBar.update();
     }
@@ -65,6 +67,17 @@ public class Tower extends Sprite{
             g.drawImage(image, range.x + range.width, range.y, -range.width, range.height, null);
         }else{
             g.drawImage(image, range.x, range.y, range.width, range.height, null);
+        }
+
+        int x = (this.face == Direction.RIGHT)? this.getFront() : this.getRange().x - this.attackDistance; 
+        int y = this.getRange().y+this.height - 5;
+
+        if(currentAttackCd >= maxAttackCd*0.9) {
+            g.setColor(Color.RED);  
+            g.fillRect(x, y, this.attackDistance, 5);
+        }else {
+            g.setColor(Color.YELLOW);  
+            g.fillRect(x, y, this.attackDistance, 5);
         }
     }
 
