@@ -13,6 +13,7 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 import javax.imageio.ImageIO;
+import java.awt.event.*;
 
 public class GameView extends JFrame implements GameLoop.View{
 	public static final int WIDTH = 1000;
@@ -162,11 +163,37 @@ public class GameView extends JFrame implements GameLoop.View{
 
 	private class GameOverPanel extends JPanel{
 		private JLabel resultText;
+		private final JButton restartButton;
+
+		private void placeComponent(GridBagConstraints cons, Component comp, JPanel panel, int x, int y, int w, int h){
+			cons.gridx = x;
+			cons.gridy = y;
+			cons.gridwidth = w;
+			cons.gridheight = h;
+			panel.add(comp, cons);
+		}
+
+		private ActionListener getResetActionListener(){
+			return new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					Container gameViewContentPane = GameView.this.getContentPane();
+					((CardLayout)(gameViewContentPane.getLayout())).next(gameViewContentPane);
+					GameView.this.game.restart();
+				}
+			};
+		}
 
 		public GameOverPanel(){
-			resultText = new JLabel();
+			this.resultText = new JLabel();
+			this.restartButton = new JButton("reset");
+			restartButton.addActionListener(getResetActionListener());
 			this.setLayout(new GridBagLayout());
-			this.add(resultText);
+			GridBagConstraints c = new GridBagConstraints();
+			c.weightx = 0.5;
+			c.weighty = 0.5;
+			placeComponent(c, Box.createHorizontalStrut(10), this, 0, 0, 3, 1);
+			placeComponent(c, this.resultText, this, 1, 1, 1, 1);
+			placeComponent(c, this.restartButton, this, 1, 2, 1, 1);
 		}
 
 		public void setResultText(String s){

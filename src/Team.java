@@ -134,6 +134,10 @@ public abstract class Team {
         return this.enemyBattleLine;
     }
 
+    public void setEnemyBattleLine(int ebl) {
+        this.enemyBattleLine = ebl;
+    }
+
     public void levelUp() {
         this.money -= this.levelCost;
         this.level += 1;
@@ -178,5 +182,15 @@ public abstract class Team {
 
     public int getLevelCost() {
         return this.levelCost;
+    }
+
+    public void reset(){
+        this.money = 0;
+        this.level = 1;
+        this.levelCost = this.getLevelUpCost();
+        this.initCD();
+        units.clear();
+        this.tower.reset();
+        this.battleLine = this.tower.getFront();
     }
 }
