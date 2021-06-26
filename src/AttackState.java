@@ -41,7 +41,7 @@ public class AttackState extends State{
 //            // need enemyTeam battleLine
 //            // if can move: move
 //            Direction face = unit.getFace();
-//            Rectangle range = unit.getRange();
+//            Rectangle range = unit.getFront();
 //            int enemyBattleLine = unit.getEnemyBattleLine();
 //            int attackDistance = unit.getAttackDistance();
 //            int front = unit.getFront();
@@ -74,9 +74,9 @@ public class AttackState extends State{
         Sprite targetSprite = null;
         int minDistance = 10000;
         for(Sprite sprite : attackableUnit){
-            if(Math.abs(sprite.getRange().x - unit.getRange().x)<minDistance){
+            if(Math.abs(sprite.getFront() - unit.getFront())<minDistance){
                 targetSprite = sprite;
-                minDistance = Math.abs(sprite.getRange().x - unit.getRange().x);
+                minDistance = Math.abs(sprite.getFront() - unit.getFront());
             }
         }
         unit.setCurrentAttackCd(unit.getOriginAttackCd()); // set cd to max value

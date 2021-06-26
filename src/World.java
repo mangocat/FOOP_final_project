@@ -2,7 +2,7 @@
 
 import java.awt.*;
 import java.util.Collection;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.toList;
 
 public class World {
     // need to check if the world needs to construct the team
@@ -23,9 +23,9 @@ public class World {
 
     public Collection<Sprite> getSprites(Sprite sprite, Direction face, int range){
         if(face==Direction.LEFT){ // find computer as targets
-            return computer.getSprites().stream().filter(s -> (sprite.getFront() - s.getFront()) <= range).collect(toSet());
+            return computer.getSprites().stream().filter(s -> (sprite.getFront() - s.getFront()) <= range).collect(toList());
         } else {
-            return human.getSprites().stream().filter(s -> (s.getFront() - sprite.getFront()) <= range).collect(toSet());
+            return human.getSprites().stream().filter(s -> (s.getFront() - sprite.getFront()) <= range).collect(toList());
         }
     }
 }
