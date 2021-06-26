@@ -43,7 +43,7 @@ public class PlaneCreator implements UnitCreator {
     }
 
     private Rectangle getPlaneRange(Team team, int width, int height) {
-        int x = (int)team.tower.getRange().getLocation().getX();
+        int x = (team.direction == Direction.LEFT)? (int)team.tower.getFront() : (int)team.tower.getFront() - width;
         int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
