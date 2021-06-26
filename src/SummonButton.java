@@ -40,8 +40,10 @@ public class SummonButton extends Button{
 	public void setPreferredSize(Dimension preferredSize){
 		super.setPreferredSize(preferredSize);
 		Image i = ((ImageIcon)getIcon()).getImage();
-		double scaleMultiplier = (double)preferredSize.height / (double)i.getHeight(null);
-		i = i.getScaledInstance((int)((double)i.getWidth(null) * scaleMultiplier), preferredSize.height, Image.SCALE_DEFAULT);
+		double widthScale = (double)preferredSize.width * 0.7 / (double)i.getWidth(null);
+		double heightScale = (double)preferredSize.height * 0.8 / (double)i.getHeight(null);
+		double scaleMultiplier = (widthScale < heightScale)? widthScale: heightScale;
+		i = i.getScaledInstance((int)((double)i.getWidth(null) * scaleMultiplier), (int)((double)i.getHeight(null) * scaleMultiplier), Image.SCALE_DEFAULT);
 		setIcon(new ImageIcon(i));
 	}
 }
