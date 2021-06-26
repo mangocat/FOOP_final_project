@@ -80,6 +80,7 @@ public class AttackState extends State{
             }
         }
         unit.setCurrentAttackCd(unit.getOriginAttackCd()); // set cd to max value
-        targetSprite.takeDamage(unit.getDamage());
+        if(targetSprite != null)
+            targetSprite.takeDamage(unit.getDamage());
     }
 }
