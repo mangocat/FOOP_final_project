@@ -1,11 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class summonCDHandler {
-
+public class SummonCoolDownHandler {    
     private Map<UnitCreator, Integer> coolDowns;
 
-    public summonCDHandler(Map<UnitCreator, Integer> CDs) {
+    public SummonCoolDownHandler(Map<UnitCreator, Integer> CDs) {
         this.coolDowns = CDs;
     }
 
@@ -13,9 +12,7 @@ public class summonCDHandler {
         Map<UnitCreator, Integer> newCDs = new HashMap<>();
         for(Map.Entry<UnitCreator, Integer> set : this.coolDowns.entrySet()) {
             Integer cd = set.getValue();
-            if(cd > 0) {
-                cd -= 1;
-            }
+            cd = (cd > 0)? cd-1 : cd;
             newCDs.put(set.getKey(), cd);
         }
         this.coolDowns = newCDs;
@@ -23,7 +20,7 @@ public class summonCDHandler {
     }
 
     public void startCD(UnitCreator unitCreator) {
-        this.coolDowns.put(unitCreator, 350);
+        this.coolDowns.put(unitCreator, unitCreator.getCost()*2);
         return;
     }
 

@@ -7,13 +7,15 @@ public abstract class State {
     final List<Image> images;
     final Image sample;
     int currentPosition;
+    protected StateHandler stateHandler;
     
-    public State(Unit unit, String stateName, List<Image> stateImages){
+    public State(Unit unit, String stateName, List<Image> stateImages, StateHandler stateHandler){
         this.unit = unit;
         name = stateName;
         images = stateImages;
         sample = stateImages.get(0);
         currentPosition = 0;
+        this.stateHandler = stateHandler;
     }
     public int getImageWidth(){
         return sample.getWidth(null);
@@ -25,14 +27,30 @@ public abstract class State {
         currentPosition = -1;
     }
     public void doAction(){} // default: do nothing
-    public abstract void update();
+    //public abstract void update();
+    public void update() {
+        currentPosition++;
+        if (currentPosition >= images.size()) {
+            reset();
+            currentPosition++;
+            State next = stateHandler.nextState(this);
+            if (!remains(next)) {
+                unit.setState(next);
+                next.update();
+            }
+        }
+    }
+
+    public abstract boolean remains(State nextState);
+
     public void render(Graphics g){
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();
+        Image currentImage = images.get(currentPosition);
         if(face == Direction.LEFT){
-            g.drawImage(images.get(currentPosition), range.x + range.width, range.y, -range.width, range.height, null);
+            g.drawImage(currentImage, range.x + range.width, range.y, -currentImage.getWidth(null), currentImage.getHeight(null), null);
         }else{
-            g.drawImage(images.get(currentPosition), range.x, range.y, range.width, range.height, null);
+            g.drawImage(currentImage, range.x, range.y, currentImage.getWidth(null), currentImage.getHeight(null), null);
         }
     }
     public boolean finished(){

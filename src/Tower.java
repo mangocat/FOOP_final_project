@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.nio.file.DirectoryStream;
 
 public class Tower extends Sprite{
+    private TowerHpBar hpBar;
     private int attackDistance;
     public static final int damage = 10;
     // private Point location;
@@ -43,6 +44,13 @@ public class Tower extends Sprite{
         
         // need location to set x and y
         setRange(new Rectangle((int)location.getX(), (int)location.getY(), width, height));
+
+        // create towerHpBar
+        hpBar = new TowerHpBar(this);
+    }
+
+    public int getCurHp(){
+        return hp;
     }
 
     @Override
@@ -55,10 +63,12 @@ public class Tower extends Sprite{
             }
             currentAttackCd = maxAttackCd; // set cd to max value
         }
+        hpBar.update();
     }
 
     @Override
     public void render(Graphics g) {
+        hpBar.render(g);
         if(face == Direction.LEFT){
             g.drawImage(image, range.x + range.width, range.y, -range.width, range.height, null);
         }else{
