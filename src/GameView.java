@@ -60,6 +60,7 @@ public class GameView extends JFrame implements GameLoop.View{
 		private World world;
 
 		public GameplayPanel(Game game, List<Button> buttons){
+			this.world = game.getWorld();
 			this.background = new Background();
 			this.canvas = new Canvas();
 			this.buttonsPanel = new ButtonsPanel(game, buttons);

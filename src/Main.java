@@ -15,8 +15,8 @@ public class Main{
         String knightName = "knight";
         String planeName = "plane";
         creatorMap.put(ninjaName, new NinjaCreator());
-        creatorMap.put(robotName, new RobotCreator());
         creatorMap.put(knightName, new KnightCreator());
+        creatorMap.put(robotName, new RobotCreator());
         creatorMap.put(planeName, new PlaneCreator());
 
         // create human, computer
@@ -33,8 +33,8 @@ public class Main{
         // create summon buttons
         List<Button> buttons = new ArrayList<>();
         buttons.add(new SummonButton(game, ninjaName));
-        buttons.add(new SummonButton(game, robotName));
         buttons.add(new SummonButton(game, knightName));
+        buttons.add(new SummonButton(game, robotName));
         buttons.add(new SummonButton(game, planeName));
 
         // the last button should be level up button
