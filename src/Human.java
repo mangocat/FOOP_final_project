@@ -14,7 +14,7 @@ public class Human extends Team {
         this.updateBattleLine();
         // this.initButtonHandler(buttons);
         this.getIncomePeriod = 0.2;
-        this.reduceCDPeriod = 0.3;
+        this.reduceCDPeriod = 0.25;
     }
 
     public void setButtons(List<Button> buttons){initButtonHandler(buttons);}

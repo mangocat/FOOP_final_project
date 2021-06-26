@@ -17,7 +17,7 @@ public class Computer extends Team {
         this.numChoices = this.unitCreators.size() + 1; 
         this.nextTarget = 0;
         this.getIncomePeriod = 0.15;
-        this.reduceCDPeriod = 0.25;
+        this.reduceCDPeriod = 0.2;
     }
 
     private int chooseTarget() {
