@@ -82,6 +82,7 @@ public class GameView extends JFrame implements GameLoop.View{
 
 		private class Canvas extends JPanel{
 			public Canvas(){
+				setBackground(new Color(0, 0, 0, 0));
 				setOpaque(false);
 				setPreferredSize(GameplayPanel.this.background.getPreferredSize());
 			}			
