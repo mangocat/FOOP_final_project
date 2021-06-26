@@ -8,17 +8,15 @@ import java.nio.file.Paths;
 
 public class Tower extends Sprite{
     private TowerHpBar hpBar;
-    private int attackDistance;
+    private int maxHp = 1000;
+    public static final int attackDistance = 300;
     public static final int damage = 50;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
     private final Image image;
-    private int maxHp;
 
-    public Tower(int hp, int attackDistance, Point location){
-        this.hp = hp;
-        this.maxHp = hp;
-        this.attackDistance = attackDistance;
+    public Tower(Point location){
+        this.hp = maxHp;
         this.location = location;
         this.currentAttackCd = 0;
         this.height = 200;

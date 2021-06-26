@@ -78,10 +78,9 @@ public abstract class Team {
     }
 
     protected void setTower(Point p) {
-        this.tower = new Tower(1000, 200, p);
+        this.tower = new Tower(p);
         this.tower.setFace(this.direction);
         this.tower.setTeam(this);
-        System.out.printf("Face : %s, range : %d, front : %d%n", this.direction.toString(), tower.getRange().x, tower.getFront());
     }
 
     public void addSprite(Sprite newSprite) {
