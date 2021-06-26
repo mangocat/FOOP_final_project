@@ -1,23 +1,15 @@
 import java.awt.*;
-import java.lang.Math;
 import java.util.Collection;
-
 import javax.imageio.ImageIO;
-
-import java.util.ArrayList;
-import java.awt.Image;
 import java.io.IOException;
 import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.DirectoryStream;
 
 public class Tower extends Sprite{
     private TowerHpBar hpBar;
     private int attackDistance;
     public static final int damage = 50;
-    // private Point location;
     public static final int maxAttackCd = 500;
     private int currentAttackCd;
     private final Image image;

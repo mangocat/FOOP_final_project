@@ -14,7 +14,7 @@ public class MoveState extends State{
         int enemyBattleLine = unit.getEnemyBattleLine();
         int attackDistance = unit.getAttackDistance();
         int front = unit.getFront();
-        int moveDistance = Math.min(unit.getMovementSpeed(), Math.abs(front-enemyBattleLine)-attackDistance);
+        int moveDistance = Math.min(unit.getMovementSpeed(), Math.max(0, Math.abs(front-enemyBattleLine)-attackDistance));
         // notify unit position change
         if(face == Direction.LEFT){
             range.x -= moveDistance;

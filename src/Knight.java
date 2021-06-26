@@ -1,17 +1,4 @@
-import java.awt.*;
-
-import javax.imageio.ImageIO;
-
-import java.util.ArrayList;
-import java.awt.Image;
-import java.io.IOException;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.DirectoryStream;
 import java.util.Collection;
-import java.util.Collections;
 
 public class Knight extends Unit {
     // static final int KNIGHT_HEIGHT = 200;
@@ -19,27 +6,11 @@ public class Knight extends Unit {
     static final int attackCd = 100; // attack every 30 updates
     static final int attackDistance = 50;
     static final int maxHp = 100;
-    static final int speed = 3;
+    static final int speed = 1;
     static final int knightDamage = 20;
 
     public Knight(double scale) {
         super(speed, attackDistance, maxHp, knightDamage, attackCd);
-        // this.height = 100;
-        // Image sample;
-        // try{
-        //     Path samplePath = Paths.get("assets/knight/attack/0.png");
-        //     sample = ImageIO.read(samplePath.toFile());
-        // }catch(IOException e){
-        //     throw new RuntimeException();
-        // }
-        // int originalHeight = sample.getHeight(null);
-        // int originalWidth = sample.getWidth(null);
-        // double scale = ((double)height)/originalHeight;
-        // this.width = (int)(originalWidth*scale);
-
-        //System.out.println("===================knight width: " + width + ", height: " + height);
-
-
 
         StateHandler nullHandler = new StateHandler(null) {
             @Override

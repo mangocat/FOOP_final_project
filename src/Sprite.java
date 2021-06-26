@@ -35,14 +35,6 @@ public abstract class Sprite {
         return team;
     }
 
-    // public void setLocation(Point location) {
-    //     this.location = location;
-    // }
-
-    // public Point getLocation(){
-    //     return location;
-    // }
-
     public void setFace(Direction face) {
         this.face = face;
     }

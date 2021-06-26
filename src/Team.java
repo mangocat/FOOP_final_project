@@ -89,6 +89,7 @@ public abstract class Team {
         this.tower = new Tower(1000, 200, p);
         this.tower.setFace(this.direction);
         this.tower.setTeam(this);
+        System.out.printf("Face : %s, range : %d, front : %d%n", this.direction.toString(), tower.getRange().x, tower.getFront());
     }
 
     public void addSprite(Sprite newSprite) {

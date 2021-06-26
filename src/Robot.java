@@ -1,45 +1,16 @@
-import java.awt.*;
-
-import javax.imageio.ImageIO;
-
-import java.util.ArrayList;
-import java.awt.Image;
-import java.io.IOException;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.DirectoryStream;
 import java.util.Collection;
-import java.util.Collections;
 
 public class Robot extends Unit {
     // static final int ROBOT_HEIGHT = 300;
     // static final int ROBOT_WIDTH = 185;
-    static final int attackCd = 200; // attack every 30 updates
-    static final int attackDistance = 60;
+    static final int attackCd = 100; // attack every 30 updates
+    static final int attackDistance = 100;
     static final int maxHp = 300;
-    static final int speed = 2;
-    static final int robotDamage = 50;
+    static final int speed = 1;
+    static final int robotDamage = 10;
 
     public Robot(double scale) {
         super(speed, attackDistance, maxHp, robotDamage, attackCd);
-        // this.height = 100;
-        // Image sample;
-        // try{
-        //     Path samplePath = Paths.get("assets/robot/attack/0.png");
-        //     sample = ImageIO.read(samplePath.toFile());
-        // }catch(IOException e){
-        //     throw new RuntimeException();
-        // }
-        // int originalHeight = sample.getHeight(null);
-        // int originalWidth = sample.getWidth(null);
-        // double scale = ((double)height)/originalHeight;
-        // this.width = (int)(originalWidth*scale);
-
-        //System.out.println("===================ninja width: " + width + ", height: " + height);
-
-
 
         StateHandler nullHandler = new StateHandler(null) {
             @Override

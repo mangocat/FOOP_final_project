@@ -45,7 +45,7 @@ public class NinjaCreator implements UnitCreator {
     }
 
     private Rectangle getNinjaRange(Team team, int width, int height) {
-        int x = (team.direction == Direction.LEFT)? (int)team.tower.getFront() : (int)team.tower.getFront() - width;
+        int x = (team.direction == Direction.LEFT)? team.tower.getFront() : team.tower.getFront() - width;
         int y = (int)team.tower.getRange().getLocation().getY() + team.tower.getHeight() - height;
         int dither = team.random.nextInt(16) - 8;
 
