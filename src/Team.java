@@ -18,8 +18,10 @@ public abstract class Team {
     protected Map<String, UnitCreator> unitCreators;
     protected SummonCoolDownHandler cdHandler;
     protected Random random;
-    protected double updatePeriod = 0.1;
-    protected double updateTime;
+    protected double getIncomePeriod;
+    protected double reduceCDPeriod;
+    protected double updateTime = 0;
+    protected double delay = 15.0/1000;
 
     public Team(Map<String, UnitCreator> unitCreators) {
         this.money = 0;
@@ -28,7 +30,6 @@ public abstract class Team {
         this.unitCreators = unitCreators;
         this.initCD();
         this.random = new Random();
-        this.updateTime = 0;
         // unitCreators.put("Ninja", new NinjaCreator());
     }
 
@@ -45,12 +46,20 @@ public abstract class Team {
     }
 
     public void update(int enemyBattleLine) {
-        this.updateTime += 15.0/1000;
+        this.updateTime += this.delay;
+        if(this.updateTime % this.getIncomePeriod < this.delay) {
+            this.money += Level.getIncome(this.level);
+        }
+        if(this.updateTime % this.reduceCDPeriod < this.delay) {
+            this.cdHandler.update();
+        }
+        /*
         if(this.updateTime >= this.updatePeriod) {
             this.updateTime -= this.updatePeriod;            
             this.money += Level.getIncome(this.level);
             this.cdHandler.update();
         }
+        */
         this.enemyBattleLine = enemyBattleLine;
         for(int i = 0; i < this.units.size(); i++) {
             this.units.get(i).update();

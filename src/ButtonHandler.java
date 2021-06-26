@@ -22,7 +22,7 @@ public class ButtonHandler {
             int CD = this.human.getCD(uc);
             int money = this.human.getMoney();
             int cost = uc.getCost();
-         
+            
             this.ucToButtons.get(uc).setEnabled((CD == 0) && (money >= cost));
             this.ucToButtons.get(uc).setText("<html>" + this.ucToStrings.get(uc) + "<br>" +
                                             "Cost: " + cost + "<br>" + 
