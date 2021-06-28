@@ -72,7 +72,7 @@ public class Tower extends Sprite{
         int x = (this.face == Direction.RIGHT)? this.getFront() : this.getRange().x - this.attackDistance; 
         int y = this.getRange().y+this.height - 5;
 
-        if(currentAttackCd >= maxAttackCd*0.9) {
+        if(currentAttackCd >= maxAttackCd*0.97) {
             g.setColor(Color.RED);  
             g.fillRect(x, y, this.attackDistance, 5);
         }else {
