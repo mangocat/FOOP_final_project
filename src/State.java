@@ -44,6 +44,9 @@ public abstract class State {
     public abstract boolean remains(State nextState);
 
     public void render(Graphics g){
+        if(currentPosition<0 || currentPosition>=images.size()){
+            currentPosition = 0;
+        }
         Direction face = unit.getFace();
         Rectangle range = unit.getRange();
         Image currentImage = images.get(currentPosition);
