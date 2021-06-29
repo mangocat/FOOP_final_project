@@ -1,3 +1,10 @@
+import model.World;
+import model.Human;
+import model.Computer;
+import creator.*;
+import controller.Game;
+import view.*;
+
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.List;
