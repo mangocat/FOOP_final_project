@@ -44,7 +44,7 @@ public class SummonButton extends Button {
         Image i = ((ImageIcon)getIcon()).getImage();
         double widthScale = (double)preferredSize.width * 0.7 / (double)i.getWidth(null);
         double heightScale = (double)preferredSize.height * 0.8 / (double)i.getHeight(null);
-        double scaleMultiplier = (widthScale < heightScale)? widthScale: heightScale;
+        double scaleMultiplier = (widthScale < heightScale) ? widthScale : heightScale;
         i = i.getScaledInstance((int)((double)i.getWidth(null) * scaleMultiplier), (int)((double)i.getHeight(null) * scaleMultiplier), Image.SCALE_DEFAULT);
         setIcon(new ImageIcon(i));
     }
